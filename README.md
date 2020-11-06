@@ -17,7 +17,7 @@
 
 1 登录
 
-![Image text](https://gitee.com/lwdillon/fx-falsework/raw/main/client/src/main/resources/images/folder/loding.png)
+![Image text](https://gitee.com/lwdillon/fx-falsework/raw/main/client/src/main/resources/images/folder/login.png)
 
 2 主页
 
