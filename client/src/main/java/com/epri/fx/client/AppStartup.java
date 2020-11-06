@@ -80,7 +80,7 @@ public class AppStartup extends Application {
         wfxDecorator.setCustomMaximize(true);
         wfxDecorator.setGraphic(new SVGGlyph(""));
 
-        Scene scene = new Scene(wfxDecorator, 1000, 700);
+        Scene scene = new Scene(wfxDecorator, 1000, 750);
         stage.setTitle("JavaFX Welcome");
         scene.setFill(Color.TRANSPARENT);
         stage.setScene(scene);
