@@ -2,13 +2,12 @@ package com.epri.fx.client.gui.uicomponents.login;
 
 import com.epri.fx.client.bean.MenuVoCell;
 import com.epri.fx.client.gui.uicomponents.main.MainController;
-import com.epri.fx.client.request.feign.admin.MenuFeign;
-import com.epri.fx.client.store.ApplicatonStore;
-import com.epri.fx.client.request.feign.login.LoginFeign;
 import com.epri.fx.client.request.Request;
+import com.epri.fx.client.request.feign.admin.MenuFeign;
+import com.epri.fx.client.request.feign.login.LoginFeign;
+import com.epri.fx.client.store.ApplicatonStore;
 import com.epri.fx.client.utils.AlertUtil;
 import com.epri.fx.client.websocket.Session;
-import com.epri.fx.server.util.DynamicEnumUtils;
 import com.epri.fx.server.util.EncryptUtil;
 import com.epri.fx.server.util.user.JwtAuthenticationRequest;
 import com.epri.fx.server.vo.FrontUser;
@@ -18,6 +17,8 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXProgressBar;
 import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.svg.SVGGlyph;
+import com.jfoenix.svg.SVGGlyphLoader;
 import io.datafx.controller.ViewController;
 import io.datafx.controller.flow.FlowException;
 import io.datafx.controller.flow.action.ActionMethod;
@@ -34,16 +35,17 @@ import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.event.EventType;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.effect.PerspectiveTransform;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import javax.annotation.PostConstruct;
@@ -65,28 +67,50 @@ import java.util.stream.Collectors;
 @ViewController("/fxml/login/login.fxml")
 public class LoginController {
 
-
-    @FXML
-
-    private Pane imagePane;
-    @FXML
-    private GridPane enterPane;
     @FXML
     private StackPane rootPane;
+    @FXML
+    private Pane imagePane;
+
+    @FXML
+    private StackPane centerPane;
+
+    //正面视图
+    @FXML
+    public HBox loginPane;
+    //反面视图
+    @FXML
+    public HBox registeredPane;
+    @FXML
+    public Hyperlink registeredLink;
+    @FXML
+    public Hyperlink loginLink;
+    @FXML
+    private Label errorLabel;
+    @FXML
+    private Label userIcon;
+    @FXML
+    private Label pwdIcon;
+    @FXML
+    private Label reuserIcon;
+    @FXML
+    private Label repwdIcon;
+    @FXML
+    private Label repwd2Icon;
+    @FXML
+    private JFXProgressBar lodingBar;
     @FXML
     private JFXTextField userNameTextField;
     @FXML
     private JFXPasswordField passWordTextField;
-    @FXML
-    private Label errorLabel;
-    @FXML
-    @ActionTrigger("login")
-    private JFXButton loginBut;
-    @FXML
-    private VBox signCredsPane;
-
-    @FXML
-    private JFXProgressBar lodingBar;
+    //翻转角度
+    private DoubleProperty angleProperty = new SimpleDoubleProperty(Math.PI / 2);
+    //正面翻转特效
+    private PerspectiveTransform frontEffect = new PerspectiveTransform();
+    //反面翻转特效
+    private PerspectiveTransform backEffect = new PerspectiveTransform();
+    private Timeline frontTimeLine = new Timeline();
+    private Timeline backTimeLine = new Timeline();
 
     @ActionHandler
     private FlowActionHandler actionHandler;
@@ -95,47 +119,42 @@ public class LoginController {
 
     private DoubleProperty imageWidth = new SimpleDoubleProperty();
     private DoubleProperty imageHeiht = new SimpleDoubleProperty();
-    private Stage stage;
 
 
     @Inject
     private Session session;
 
+    @FXML
+    @ActionTrigger("login")
+    private JFXButton loginBut;
 
     @FXMLViewFlowContext
     private ViewFlowContext flowContext;
 
     @PostConstruct
     public void init() {
-        errorLabel.visibleProperty().bind(errorLabel.textProperty().isNotEmpty());
-        errorLabel.managedProperty().bind(errorLabel.visibleProperty());
 
-        lodingBar.visibleProperty().bind(enterPane.disableProperty());
-        lodingBar.managedProperty().bind(lodingBar.visibleProperty());
+        try {
+            SVGGlyph userSvg = SVGGlyphLoader.getIcoMoonGlyph(ApplicatonStore.ICON_FONT_KEY + ".user-name");
+            SVGGlyph pwdSvg = SVGGlyphLoader.getIcoMoonGlyph(ApplicatonStore.ICON_FONT_KEY + ".password");
+            SVGGlyph reuserSvg = SVGGlyphLoader.getIcoMoonGlyph(ApplicatonStore.ICON_FONT_KEY + ".user-name");
+            SVGGlyph repwdSvg = SVGGlyphLoader.getIcoMoonGlyph(ApplicatonStore.ICON_FONT_KEY + ".password");
+            SVGGlyph repwd2Svg = SVGGlyphLoader.getIcoMoonGlyph(ApplicatonStore.ICON_FONT_KEY + ".querenmima");
+            userSvg.setId("login-svg-glyph");
+            pwdSvg.setId("login-svg-glyph");
+            reuserSvg.setId("login-svg-glyph");
+            repwdSvg.setId("login-svg-glyph");
+            repwd2Svg.setId("login-svg-glyph");
 
-        userNameTextField.focusedProperty().addListener((o, oldVal, newVal) -> {
-            if (!newVal) {
-                userNameTextField.validate();
-            }
-        });
-        passWordTextField.focusedProperty().addListener((o, oldVal, newVal) -> {
-            if (!newVal) {
-                passWordTextField.validate();
-            }
-        });
+            userIcon.setGraphic(userSvg);
+            pwdIcon.setGraphic(pwdSvg);
+            reuserIcon.setGraphic(reuserSvg);
+            repwdIcon.setGraphic(repwdSvg);
+            repwd2Icon.setGraphic(repwd2Svg);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-        loginBut.disableProperty().bind(Bindings.or(
-                userNameTextField.textProperty().isEqualTo(""),
-                passWordTextField.textProperty().isEqualTo("")));
-
-        rootPane.setOnKeyPressed(event -> {
-            if (event.getCode() == KeyCode.ENTER) {
-                if (loginBut.isDisable() == false) {
-                    login();
-                }
-            }
-
-        });
         imagePane.widthProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
@@ -149,16 +168,25 @@ public class LoginController {
             }
         });
 
+        registeredPane.visibleProperty().bind(
+                Bindings.when(angleProperty.lessThan(0)).then(true).otherwise(false));
+        loginPane.visibleProperty().bind(registeredPane.visibleProperty().not());
 
+        initAnimation();
+        loadingImage();
+        initAction();
 
-        FadeTransition fadeTransition = new FadeTransition(Duration.millis(500), signCredsPane);
+    }
+
+    private void initAnimation() {
+        FadeTransition fadeTransition = new FadeTransition(Duration.millis(500), centerPane);
         fadeTransition.setFromValue(0f);
         fadeTransition.setToValue(1f);
 
-        TranslateTransition translateTransition = new TranslateTransition(Duration.millis(500), signCredsPane);
+        TranslateTransition translateTransition = new TranslateTransition(Duration.millis(500), centerPane);
         translateTransition.setInterpolator(Interpolator.EASE_BOTH);
         translateTransition.setFromY(400);
-        translateTransition.setToY(signCredsPane.getLayoutY());
+        translateTransition.setToY(centerPane.getLayoutY());
 
         ParallelTransition parallelTransition = new ParallelTransition();
         parallelTransition.setDelay(Duration.millis(1500));
@@ -168,6 +196,52 @@ public class LoginController {
         );
         parallelTransition.setCycleCount(1);
         parallelTransition.play();
+
+
+        KeyFrame frame1 = new KeyFrame(Duration.ZERO, new KeyValue(angleProperty,
+                Math.PI / 2, Interpolator.LINEAR));
+        KeyFrame frame2 = new KeyFrame(Duration.seconds(0.5),
+                new EventHandler() {
+                    @Override
+                    public void handle(Event event) {
+                        loginPane.setEffect(null);
+                        registeredPane.setEffect(null);
+                    }
+
+                }, new KeyValue(angleProperty, -Math.PI / 2, Interpolator.LINEAR));
+
+        KeyFrame frame3 = new KeyFrame(Duration.seconds(0.5), new EventHandler() {
+            @Override
+            public void handle(Event event) {
+                loginPane.setEffect(null);
+                registeredPane.setEffect(null);
+            }
+
+        }, new KeyValue(angleProperty,
+                Math.PI / 2, Interpolator.LINEAR));
+        KeyFrame frame4 = new KeyFrame(Duration.ZERO, new KeyValue(angleProperty, -Math.PI / 2, Interpolator.LINEAR));
+
+
+        frontTimeLine.getKeyFrames().addAll(frame1, frame2);
+        backTimeLine.getKeyFrames().addAll(frame4, frame3);
+    }
+
+    private void setPT(PerspectiveTransform pt, double t) {
+        double width = 650;
+        double height = 450;
+        double radius = width / 2;
+        double back = height / 10;
+        pt.setUlx(radius - Math.sin(t) * radius);
+        pt.setUly(0 - Math.cos(t) * back);
+        pt.setUrx(radius + Math.sin(t) * radius);
+        pt.setUry(0 + Math.cos(t) * back);
+        pt.setLrx(radius + Math.sin(t) * radius);
+        pt.setLry(height - Math.cos(t) * back);
+        pt.setLlx(radius - Math.sin(t) * radius);
+        pt.setLly(height + Math.cos(t) * back);
+    }
+
+    private void loadingImage() {
 
         ImageView logBack = new ImageView("/images/loginBack.jpg");
         logBack.fitHeightProperty().bind(imageHeiht);
@@ -205,10 +279,62 @@ public class LoginController {
             }
         }).withFinal(() -> sequentialTransition.play()).run();
 
+    }
 
+    private void initAction() {
+        errorLabel.visibleProperty().bind(errorLabel.textProperty().isNotEmpty());
+        errorLabel.managedProperty().bind(errorLabel.visibleProperty());
+
+        lodingBar.visibleProperty().bind(centerPane.disableProperty());
+        lodingBar.managedProperty().bind(lodingBar.visibleProperty());
+
+        userNameTextField.focusedProperty().addListener((o, oldVal, newVal) -> {
+            if (!newVal) {
+                userNameTextField.validate();
+            }
+        });
+        passWordTextField.focusedProperty().addListener((o, oldVal, newVal) -> {
+            if (!newVal) {
+                passWordTextField.validate();
+            }
+        });
+
+        loginBut.disableProperty().bind(Bindings.or(
+                userNameTextField.textProperty().isEqualTo(""),
+                passWordTextField.textProperty().isEqualTo("")));
+
+        rootPane.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                if (loginBut.isDisable() == false) {
+                    login();
+                }
+            }
+
+        });
+        angleProperty.addListener((observable, oldValue, newValue) -> {
+            setPT(frontEffect, angleProperty.get());
+            setPT(backEffect, angleProperty.get() - Math.PI);
+        });
+        registeredLink.setOnAction(event -> {
+            loginPane.setEffect(frontEffect);
+            registeredPane.setEffect(backEffect);
+            frontTimeLine.play();
+        });
+        loginLink.setOnAction(event -> {
+            loginPane.setEffect(frontEffect);
+            registeredPane.setEffect(backEffect);
+            backTimeLine.play();
+        });
     }
 
 
+    /**
+     * @Description:登录
+     * @param: []
+     * @return: void
+     * @auther: liwen
+     * @date: 2020/11/6 9:56 上午
+     */
     @ActionMethod("login")
     private void login() {
 
@@ -217,7 +343,7 @@ public class LoginController {
         jwtAuthenticationRequest.setPassword(EncryptUtil.getInstance().Base64Encode(passWordTextField.getText()));
         ProcessChain.create()
                 .addRunnableInPlatformThread(() -> {
-                    enterPane.setDisable(true);
+                    centerPane.setDisable(true);
                     loginBut.setText("正在登录...");
                 })
                 .addSupplierInExecutor(() -> Request.connector(LoginFeign.class).login(jwtAuthenticationRequest))
@@ -239,7 +365,7 @@ public class LoginController {
                     lodingBar.requestFocus();
                 })
                 .withFinal(() -> {
-                    enterPane.setDisable(false);
+                    centerPane.setDisable(false);
                     loginBut.setText("登录");
                 }).run();
 
@@ -312,7 +438,7 @@ public class LoginController {
                             continue;
                         }
 
-                        MenuVoCell menuVoCell=new MenuVoCell(menu,childrenMenus);
+                        MenuVoCell menuVoCell = new MenuVoCell(menu, childrenMenus);
 
                         ApplicatonStore.getMenuVoCells().add(menuVoCell);
 
