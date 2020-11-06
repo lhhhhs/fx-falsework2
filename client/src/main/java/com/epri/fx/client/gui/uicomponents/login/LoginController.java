@@ -171,6 +171,8 @@ public class LoginController {
         registeredPane.visibleProperty().bind(
                 Bindings.when(angleProperty.lessThan(0)).then(true).otherwise(false));
         loginPane.visibleProperty().bind(registeredPane.visibleProperty().not());
+        loginPane.managedProperty().bind(loginPane.visibleProperty());
+        registeredPane.managedProperty().bind(registeredPane.visibleProperty());
 
         initAnimation();
         loadingImage();
@@ -200,7 +202,7 @@ public class LoginController {
 
         KeyFrame frame1 = new KeyFrame(Duration.ZERO, new KeyValue(angleProperty,
                 Math.PI / 2, Interpolator.LINEAR));
-        KeyFrame frame2 = new KeyFrame(Duration.seconds(0.5),
+        KeyFrame frame2 = new KeyFrame(Duration.seconds(0.7),
                 new EventHandler() {
                     @Override
                     public void handle(Event event) {
@@ -210,7 +212,7 @@ public class LoginController {
 
                 }, new KeyValue(angleProperty, -Math.PI / 2, Interpolator.LINEAR));
 
-        KeyFrame frame3 = new KeyFrame(Duration.seconds(0.5), new EventHandler() {
+        KeyFrame frame3 = new KeyFrame(Duration.seconds(.7), new EventHandler() {
             @Override
             public void handle(Event event) {
                 loginPane.setEffect(null);
