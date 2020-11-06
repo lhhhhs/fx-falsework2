@@ -38,7 +38,7 @@
 .card-pane {
     -fx-background-color: -fx-card-base;
     -fx-padding: 10;
-    -fx-background-radius: 14;
+    -fx-background-radius: 14px;
     -fx-border-color: #313D4F;
     -fx-border-width: 1px;
     -fx-border-radius: 14px;
@@ -50,11 +50,11 @@
 * text和label                                                                *
 *                                                                              *
 *******************************************************************************/
-.text, .label {
+ .label {
     -fx-text-fill: -fx-text-color;
     -fx-font-family: "Microsoft YaHei";
     -fx-font-weight: 100;
-    -fx-font-size: -fx-font-base14;
+    -fx-font-size: 14px;
 }
 
 /*******************************************************************************
@@ -218,7 +218,7 @@
 
 .lfx-decorator .lfx-decorator-title-container .lfx-decorator-text {
     -fx-fill: -fx-text-color;
-    -fx-font-size: 16;
+    -fx-font-size: 16px;
 }
 
 .lfx-decorator .lfx-decorator-title-container .jfx-svg-glyph {
@@ -574,7 +574,7 @@
     -fx-font-family: "Microsoft YaHei";
     -fx-font-weight: BOLD;
     -fx-text-fill: -fx-text-color;
-    -fx-font-size: -fx-font-base16;
+    -fx-font-size: 16px;
 }
 
 /**TableView列头展示隐藏列按钮*/
@@ -705,7 +705,7 @@
 }
 
 .jfx-text-field > .input-line,
-.jfx-password-fieldxt-field > .input-line,
+.jfx-password-field > .input-line,
 .jfx-text-area > .input-line,
 .jfx-combo-box > .input-line {
     -fx-background-color: -jfx-unfocus-color;
@@ -714,27 +714,14 @@
 }
 
 .jfx-text-field > .input-focused-line,
-.jfx-password-fieldxt-field > .input-focused-line,
+.jfx-password-field > .input-focused-line,
 .jfx-text-area > .input-focused-line,
-.jfx-tejfx-combo-box > .input-focused-line {
+.jfx-combo-box > .input-focused-line {
     -fx-background-color: -jfx-focus-color;
     -fx-pref-height: 1px;
 }
 
-.login-text {
-    -fx-background-color: transparent;
-    -fx-font-family: "Microsoft YaHei";
-    -fx-font-weight: 100;
-    -fx-text-fill: -fx-light-text-color;
-    -fx-prompt-text-fill: #70665e;
-    -fx-alignment: top-left;
-    -jfx-focus-color: #70665e;
-    -jfx-unfocus-color: -fx-light-text-color;
-}
 
-#login-glyph-icon {
-    -fx-fill: #70665e;
-}
 
 
 /*******************************************************************************

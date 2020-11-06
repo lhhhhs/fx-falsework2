@@ -2,6 +2,7 @@ package com.epri.fx.client;
 
 import com.epri.fx.client.gui.uicomponents.control.LFXDecorator;
 import com.epri.fx.client.gui.uicomponents.login.LoginController;
+import com.epri.fx.client.gui.uicomponents.login.LoginControllerNew;
 import com.epri.fx.client.store.ApplicatonStore;
 import com.jfoenix.assets.JFoenixResources;
 import com.jfoenix.svg.SVGGlyph;
@@ -69,7 +70,7 @@ public class AppStartup extends Application {
 
         ApplicationContext.getInstance().register(stage, Stage.class);
 
-        Flow flow = new Flow(LoginController.class);
+        Flow flow = new Flow(LoginControllerNew.class);
         FlowHandler flowHandler = flow.createHandler();
         StackPane rootPane = flowHandler.start(new AnimatedFlowContainer(Duration.millis(320), ContainerAnimations.SWIPE_LEFT));
 
@@ -87,7 +88,7 @@ public class AppStartup extends Application {
         stage.show();
 
 
-        scene.getStylesheets().addAll(JFoenixResources.load("/css/app-fonts.css").toExternalForm(),AppStartup.class.getResource("/css/app.css").toExternalForm());
+        scene.getStylesheets().addAll(JFoenixResources.load("/css/app-fonts.css").toExternalForm(),AppStartup.class.getResource("/css/app.css").toExternalForm(),AppStartup.class.getResource("/css/login.css").toExternalForm());
 
     }
 
