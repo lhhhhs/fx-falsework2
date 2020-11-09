@@ -87,7 +87,7 @@ public class AppStartup extends Application {
         stage.show();
 
 
-        scene.getStylesheets().addAll(JFoenixResources.load("/css/app-fonts.css").toExternalForm(),AppStartup.class.getResource("/css/app.css").toExternalForm(),AppStartup.class.getResource("/css/login.css").toExternalForm());
+        scene.getStylesheets().addAll(JFoenixResources.load("/css/app-fonts.css").toExternalForm(),AppStartup.class.getResource("/css/login.css").toExternalForm(),AppStartup.class.getResource("/css/app.css").toExternalForm());
 
     }
 

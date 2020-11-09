@@ -51,6 +51,11 @@
     -jfx-unfocus-color: -fx-light-text-color;
 }
 
+#login-text-field:error {
+    -jfx-focus-color: #D34336;
+    -jfx-unfocus-color: #D34336;
+}
+
 #login-svg-glyph{
     -jfx-size: 20px;
     -fx-background-color: #70665e;

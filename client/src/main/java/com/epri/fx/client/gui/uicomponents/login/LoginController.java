@@ -19,6 +19,7 @@ import com.jfoenix.controls.JFXProgressBar;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.svg.SVGGlyph;
 import com.jfoenix.svg.SVGGlyphLoader;
+import com.jfoenix.validation.RegexValidator;
 import io.datafx.controller.ViewController;
 import io.datafx.controller.flow.FlowException;
 import io.datafx.controller.flow.action.ActionMethod;
@@ -31,6 +32,7 @@ import io.datafx.controller.util.VetoException;
 import io.datafx.core.concurrent.ProcessChain;
 import javafx.animation.*;
 import javafx.beans.binding.Bindings;
+import javafx.beans.binding.BooleanBinding;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.value.ChangeListener;
@@ -103,6 +105,14 @@ public class LoginController {
     private JFXTextField userNameTextField;
     @FXML
     private JFXPasswordField passWordTextField;
+    @FXML
+    private JFXTextField reUserNameTextField;
+    @FXML
+    private JFXPasswordField rePwdTextField;
+    @FXML
+    private JFXPasswordField rePwd2TextField;
+    @FXML
+    private RegexValidator regexValidatorPwd2;
     //翻转角度
     private DoubleProperty angleProperty = new SimpleDoubleProperty(Math.PI / 2);
     //正面翻转特效
@@ -127,6 +137,8 @@ public class LoginController {
     @FXML
     @ActionTrigger("login")
     private JFXButton loginBut;
+    @FXML
+    private JFXButton registeredBut;
 
     @FXMLViewFlowContext
     private ViewFlowContext flowContext;
@@ -175,7 +187,7 @@ public class LoginController {
         registeredPane.managedProperty().bind(registeredPane.visibleProperty());
 
         initAnimation();
-        loadingImage();
+//        loadingImage();
         initAction();
 
     }
@@ -301,9 +313,52 @@ public class LoginController {
             }
         });
 
+        reUserNameTextField.focusedProperty().addListener((o, oldVal, newVal) -> {
+            if (!newVal) {
+                reUserNameTextField.validate();
+            }
+
+
+        });
+        rePwdTextField.focusedProperty().addListener((o, oldVal, newVal) -> {
+            if (!newVal) {
+                rePwdTextField.validate();
+            }
+        });
+        rePwd2TextField.focusedProperty().addListener((o, oldVal, newVal) -> {
+            if (!newVal) {
+                regexValidatorPwd2.setRegexPattern("^" + rePwdTextField.getText() + "$");
+                rePwd2TextField.validate();
+            }
+        });
+
+        reUserNameTextField.textProperty().addListener((observable, oldValue, newValue) -> {
+            reUserNameTextField.validate();
+        });
+        rePwdTextField.textProperty().addListener((o, oldVal, newVal) -> {
+            rePwdTextField.validate();
+
+        });
+        rePwd2TextField.textProperty().addListener((o, oldVal, newVal) -> {
+            regexValidatorPwd2.setRegexPattern("^" + rePwdTextField.getText() + "$");
+            rePwd2TextField.validate();
+        });
+
         loginBut.disableProperty().bind(Bindings.or(
                 userNameTextField.textProperty().isEqualTo(""),
                 passWordTextField.textProperty().isEqualTo("")));
+
+        BooleanBinding b1 = Bindings.or(
+                reUserNameTextField.textProperty().isEqualTo(""),
+                rePwdTextField.textProperty().isEqualTo(""));
+
+        BooleanBinding b2 = Bindings.or(b1,
+                rePwd2TextField.textProperty().isEqualTo(""));
+
+        BooleanBinding b3 = Bindings.or(reUserNameTextField.activeValidatorProperty().isNotNull(), rePwdTextField.activeValidatorProperty().isNotNull());
+        BooleanBinding b4 = Bindings.or(b3, rePwd2TextField.activeValidatorProperty().isNotNull());
+
+        registeredBut.disableProperty().bind(Bindings.or(b2, b4));
 
         rootPane.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
