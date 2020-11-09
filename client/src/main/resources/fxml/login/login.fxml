@@ -190,7 +190,7 @@
                                                 <Font size="18.0"/>
                                             </font>
                                             <validators>
-                                                <RegexValidator fx:id="regexValidatorPwd2" message="两次密码不一至！">
+                                                <RegexValidator fx:id="regexValidatorPwd2" message="两次密码不一致!">
                                                     <FontIcon iconLiteral="fas-exclamation-triangle"/>
                                                 </RegexValidator>
                                             </validators>
