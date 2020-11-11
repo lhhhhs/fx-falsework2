@@ -15,27 +15,31 @@
     
 界面：
 
-1 登录
+ 登录
 
 ![Image text](https://gitee.com/lwdillon/fx-falsework/raw/main/client/src/main/resources/images/folder/login.png)
 
-2 主页
+ 注册
+
+![Image text](https://gitee.com/lwdillon/fx-falsework/raw/main/client/src/main/resources/images/folder/registered.png)
+
+ 主页
 
 ![Image text](https://gitee.com/lwdillon/fx-falsework/raw/main/client/src/main/resources/images/folder/home.png)
 
-2 用户管理
+ 用户管理
 
 ![Image text](https://gitee.com/lwdillon/fx-falsework/raw/main/client/src/main/resources/images/folder/user.png)
 
-3 菜单管理
+ 菜单管理
 
 ![Image text](https://gitee.com/lwdillon/fx-falsework/raw/main/client/src/main/resources/images/folder/menu.png)
 
-4 角色权限管理
+ 角色权限管理
 
 ![Image text](https://gitee.com/lwdillon/fx-falsework/raw/main/client/src/main/resources/images/folder/group.png)
 
-5 角色类型管理
+ 角色类型管理
 
 ![Image text](https://gitee.com/lwdillon/fx-falsework/raw/main/client/src/main/resources/images/folder/grouptype.png)
 
