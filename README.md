@@ -1,7 +1,7 @@
 # fx-falsework
 基于javafx、spring boot 开发的客户端与服务端系统开发脚手架  
 
-说明：  
+# 说明：  
 
     1.当前数据库为达梦数据库，可自行换其它数据库，在server端引入所用数据库jar，并修改server端application.yml相应配置即可  
     
@@ -13,7 +13,9 @@
     
     5.服务端为标准的spring boot项目，springmvc+mybatis。  
     
-界面：
+    6.用户名：admin 密码：111111
+    
+# 界面：
 
  登录
 

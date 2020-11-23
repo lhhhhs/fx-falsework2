@@ -94,6 +94,6 @@ public class AppStartup extends Application {
     @Override
     public void stop() throws Exception {
 
-        System.err.println(Font.getFontNames());
+
     }
 }
