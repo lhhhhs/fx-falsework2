@@ -6,8 +6,7 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       #url: jdbc:dm://10.105.73.121:12345/EMSHIS
-      url: jdbc:dm://192.168.1.210/EMSHIS
-      #url: jdbc:dm://192.168.:12345/EMSHIS
+      url: jdbc:dm://192.168.1.210:12345/EMSHIS
       username: IPSM_DBA
       password: IPSM_DBA
       driver-class-name: dm.jdbc.driver.DmDriver

@@ -1,6 +1,7 @@
 package com.epri.fx.client.gui.uicomponents.home;
 
 import com.epri.fx.client.bean.CountryPath;
+import com.epri.fx.client.store.ApplicatonStore;
 import eu.hansolo.tilesfx.Tile;
 import eu.hansolo.tilesfx.TileBuilder;
 import eu.hansolo.tilesfx.TimeSection;
@@ -60,8 +61,10 @@ public class HomeController {
     @ActionHandler
     private FlowActionHandler actionHandler;
 
-    public static final Color BACKGROUND = Color.rgb(39, 49, 66); // #2a2a2a
-    public static final Color BORDERCOLOR = Color.rgb(49, 61, 79); // #2a2a2a
+    public static final Color BACKGROUND_DARK = Color.rgb(39, 49, 66); // #2a2a2a
+    public static final Color BACKGROUND_LIGHT = Color.rgb(255, 255, 255); // #2a2a2a
+    public static final Color BORDERCOLOR_DARK = Color.rgb(49, 61, 79); // #2a2a2a
+    public static final Color BORDERCOLOR_LIGHT = Color.rgb(185, 185, 185, 0.3f); // #2a2a2a
 
 
     private static final Random RND = new Random();
@@ -227,13 +230,13 @@ public class HomeController {
                         new Stop(0.5, Tile.YELLOW),
                         new Stop(1.0, Tile.RED))
                 .strokeWithGradient(true)
-                .backgroundColor(BACKGROUND).borderColor(BORDERCOLOR).borderWidth(0.8d)
+                .backgroundColor(BACKGROUND_DARK).borderColor(BORDERCOLOR_DARK).borderWidth(0.8d)
                 //.smoothing(true)
                 .build();
 
 
         areaChartTile = TileBuilder.create()
-                .skinType(Tile.SkinType.SMOOTHED_CHART).backgroundColor(BACKGROUND).borderRadius(14).borderColor(BORDERCOLOR).borderWidth(0.8d)
+                .skinType(Tile.SkinType.SMOOTHED_CHART).backgroundColor(BACKGROUND_DARK).borderRadius(14).borderColor(BORDERCOLOR_DARK).borderWidth(0.8d)
                 .title("SmoothedChart Tile")
                 .chartType(Tile.ChartType.AREA)
                 //.animated(true)
@@ -248,7 +251,7 @@ public class HomeController {
                 .build();
 
         lineChartTile = TileBuilder.create()
-                .skinType(Tile.SkinType.SMOOTHED_CHART).backgroundColor(BACKGROUND).borderRadius(14).borderColor(BORDERCOLOR).borderWidth(0.8d)
+                .skinType(Tile.SkinType.SMOOTHED_CHART).backgroundColor(BACKGROUND_DARK).borderRadius(14).borderColor(BORDERCOLOR_DARK).borderWidth(0.8d)
                 .title("SmoothedChart Tile")
                 //.animated(true)
                 .smoothing(false)
@@ -257,7 +260,7 @@ public class HomeController {
 
 
         worldTile = TileBuilder.create()
-                .skinType(Tile.SkinType.WORLDMAP).backgroundColor(BACKGROUND).borderRadius(14).borderColor(BORDERCOLOR).borderWidth(0.8d)
+                .skinType(Tile.SkinType.WORLDMAP).backgroundColor(BACKGROUND_DARK).borderRadius(14).borderColor(BORDERCOLOR_DARK).borderWidth(0.8d)
                 .title("WorldMap Tile")
                 .text("Whatever text")
                 .textVisible(false)
@@ -265,7 +268,7 @@ public class HomeController {
 
 
         radialChartTile = TileBuilder.create()
-                .skinType(Tile.SkinType.RADIAL_CHART).backgroundColor(BACKGROUND).borderRadius(14).borderColor(BORDERCOLOR).borderWidth(0.8d)
+                .skinType(Tile.SkinType.RADIAL_CHART).backgroundColor(BACKGROUND_DARK).borderRadius(14).borderColor(BORDERCOLOR_DARK).borderWidth(0.8d)
                 .title("RadialChart")
                 .text("Some text")
                 .textVisible(false)
@@ -274,7 +277,7 @@ public class HomeController {
 
         donutChartTile = TileBuilder.create()
                 .skinType(Tile.SkinType.DONUT_CHART)
-                .title("DonutChart").backgroundColor(BACKGROUND).borderRadius(14).borderColor(BORDERCOLOR).borderWidth(0.8d)
+                .title("DonutChart").backgroundColor(BACKGROUND_DARK).borderRadius(14).borderColor(BORDERCOLOR_DARK).borderWidth(0.8d)
                 .text("Some text")
                 .textVisible(false)
                 .chartData(chartData1, chartData2, chartData3, chartData4)
@@ -282,7 +285,7 @@ public class HomeController {
 
         circularProgressTile = TileBuilder.create()
                 .skinType(Tile.SkinType.CIRCULAR_PROGRESS)
-                .title("CircularProgress").backgroundColor(BACKGROUND).borderRadius(14).borderColor(BORDERCOLOR).borderWidth(0.8d)
+                .title("CircularProgress").backgroundColor(BACKGROUND_DARK).borderRadius(14).borderColor(BORDERCOLOR_DARK).borderWidth(0.8d)
                 .text("Some text")
                 .unit("\u0025")
                 //.graphic(new WeatherSymbol(ConditionAndIcon.CLEAR_DAY, 48, Color.WHITE))
@@ -291,7 +294,7 @@ public class HomeController {
 
         radarChartTile1 = TileBuilder.create().skinType(Tile.SkinType.RADAR_CHART)
                 .minValue(0)
-                .maxValue(50).backgroundColor(BACKGROUND).borderRadius(14).borderColor(BORDERCOLOR).borderWidth(0.8d)
+                .maxValue(50).backgroundColor(BACKGROUND_DARK).borderRadius(14).borderColor(BORDERCOLOR_DARK).borderWidth(0.8d)
                 .title("RadarChart Sector")
                 .unit("Unit")
                 .radarChartMode(RadarChart.Mode.SECTOR)
@@ -315,7 +318,7 @@ public class HomeController {
 
 
         ephemerisTile = TileBuilder.create().skinType(Tile.SkinType.EPHEMERIS)
-                .title("Ephemeris").backgroundColor(BACKGROUND).borderRadius(14).borderColor(BORDERCOLOR).borderWidth(0.8d)
+                .title("Ephemeris").backgroundColor(BACKGROUND_DARK).borderRadius(14).borderColor(BORDERCOLOR_DARK).borderWidth(0.8d)
                 .currentLocation(new Location(51.911515, 7.6340026, "Hiltrup"))
                 .text("Hiltrup")
                 .build();
@@ -332,7 +335,7 @@ public class HomeController {
 
         statusTile = TileBuilder.create()
                 .skinType(Tile.SkinType.STATUS)
-                .title("Status Tile").borderWidth(0.8d).backgroundColor(BACKGROUND).borderRadius(14).borderColor(BORDERCOLOR).borderWidth(0.8d)
+                .title("Status Tile").borderWidth(0.8d).backgroundColor(BACKGROUND_DARK).borderRadius(14).borderColor(BORDERCOLOR_DARK).borderWidth(0.8d)
                 .description("Notifications")
                 .leftText("CRITICAL")
                 .middleText("WARNING")
@@ -402,23 +405,41 @@ public class HomeController {
             }
         };
 
-        System.out.println("Initialization: " + (System.currentTimeMillis() - start) + "ms");
-
 
         centerPane.add(radialChartTile, 0, 0);
         centerPane.add(donutChartTile, 1, 0);
         centerPane.add(circularProgressTile, 2, 0);
         centerPane.add(radarChartTile1, 3, 0);
-
         centerPane.add(worldTile, 0, 1, 2, 1);
         centerPane.add(ephemerisTile, 2, 1);
         centerPane.add(statusTile, 3, 1);
-
         centerPane.add(sparkLineTile, 0, 2);
         centerPane.add(areaChartTile, 1, 2);
         centerPane.add(lineChartTile, 2, 2, 2, 1);
 
-        System.out.println("Nodes in Scene: " + noOfNodes);
+
+        ApplicatonStore.styleProperty().addListener((observable, oldValue, newValue) -> {
+
+            centerPane.getChildren().forEach(node -> {
+
+                if (node instanceof Tile) {
+                    if (newValue) {
+                        ((Tile) node).setBackgroundColor(BACKGROUND_DARK);
+                        ((Tile) node).setBorderColor(BORDERCOLOR_DARK);
+                        ((Tile) node).setForegroundColor(Color.rgb(223, 223, 223));
+                    } else {
+                        ((Tile) node).setBackgroundColor(BACKGROUND_LIGHT);
+                        ((Tile) node).setBorderColor(BORDERCOLOR_LIGHT);
+                        ((Tile) node).setForegroundColor(Color.rgb(84, 84, 84));
+
+                    }
+                }
+
+            });
+
+
+        });
+
 
         timer.start();
 

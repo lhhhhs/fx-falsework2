@@ -53,7 +53,7 @@ public class AppStartup extends Application {
         String keyPrefix = "";
 //        //全局样式
 //        setUserAgentStylesheet(null);
-//        StyleManager.getInstance().addUserAgentStylesheet("css/app.css");
+//        StyleManager.getInstance().addUserAgentStylesheet("css/app-light.css");
 
         new Thread(() -> {
             try {
@@ -87,7 +87,7 @@ public class AppStartup extends Application {
         stage.show();
 
 
-        scene.getStylesheets().addAll(JFoenixResources.load("/css/app-fonts.css").toExternalForm(),AppStartup.class.getResource("/css/login.css").toExternalForm(),AppStartup.class.getResource("/css/app.css").toExternalForm());
+        scene.getStylesheets().addAll(JFoenixResources.load("/css/app-fonts.css").toExternalForm(),AppStartup.class.getResource("/css/login.css").toExternalForm(),AppStartup.class.getResource("/css/app-light.css").toExternalForm());
 
     }
 

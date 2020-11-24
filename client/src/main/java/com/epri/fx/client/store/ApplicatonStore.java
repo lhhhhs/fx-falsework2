@@ -22,6 +22,7 @@ import java.util.Map;
 public class ApplicatonStore {
 
     public static String ICON_FONT_KEY = "icon.svg";
+    private static SimpleBooleanProperty style = new SimpleBooleanProperty();
     private static SimpleIntegerProperty status = new SimpleIntegerProperty();
     private static SimpleStringProperty code = new SimpleStringProperty();
     private static SimpleStringProperty token = new SimpleStringProperty();
@@ -168,6 +169,18 @@ public class ApplicatonStore {
             permissionMenus = new SimpleListProperty<>(innerList);
         }
         return permissionMenus;
+    }
+
+    public static boolean isStyle() {
+        return style.get();
+    }
+
+    public static SimpleBooleanProperty styleProperty() {
+        return style;
+    }
+
+    public static void setStyle(boolean style) {
+        ApplicatonStore.style.set(style);
     }
 
     public static void clearPermissionInfo() {

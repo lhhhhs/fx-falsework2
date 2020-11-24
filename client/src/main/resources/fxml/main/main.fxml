@@ -8,6 +8,7 @@
 <?import com.jfoenix.controls.JFXListView?>
 <?import com.jfoenix.controls.JFXRippler?>
 <?import com.jfoenix.controls.JFXTabPane?>
+<?import com.jfoenix.controls.JFXToggleButton?>
 <?import com.jfoenix.controls.JFXToolbar?>
 <?import com.jfoenix.transitions.hamburger.HamburgerSlideCloseTransition?>
 <?import javafx.geometry.Insets?>
@@ -71,8 +72,7 @@
 
 
                         <HBox alignment="CENTER">
-                            <JFXButton fx:id="skinButton" contentDisplay="GRAPHIC_ONLY" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="40.0" styleClass="tool-bar-button">
-                            </JFXButton>
+                     <JFXToggleButton fx:id="styleBut" text="暗色" />
                             <JFXButton fx:id="rolesBut" contentDisplay="GRAPHIC_ONLY" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" styleClass="tool-bar-button" text="user" textFill="WHITE" />
                             <VBox alignment="CENTER">
                                 <Label fx:id="userLabel" maxWidth="1.7976931348623157E308" style="-fx-font-size: 16;-fx-font-weight: bold" text="李稳" VBox.vgrow="ALWAYS" />

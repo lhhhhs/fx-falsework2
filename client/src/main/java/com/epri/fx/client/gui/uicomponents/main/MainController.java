@@ -1,5 +1,6 @@
 package com.epri.fx.client.gui.uicomponents.main;
 
+import com.epri.fx.client.AppStartup;
 import com.epri.fx.client.bean.MenuVoCell;
 import com.epri.fx.client.gui.feature.FeatureResourceConsumer;
 import com.epri.fx.client.gui.uicomponents.home.HomeController;
@@ -7,6 +8,7 @@ import com.epri.fx.client.gui.uicomponents.login.LoginController;
 import com.epri.fx.client.gui.uicomponents.main.components.UserInfoController;
 import com.epri.fx.client.store.ApplicatonStore;
 import com.epri.fx.server.vo.MenuVO;
+import com.jfoenix.assets.JFoenixResources;
 import com.jfoenix.controls.*;
 import com.jfoenix.svg.SVGGlyphLoader;
 import io.datafx.controller.ViewController;
@@ -84,7 +86,7 @@ public class MainController {
     private JFXButton homeButton;
     @FXML
     @ActionTrigger("showSkinPane")
-    private JFXButton skinButton;
+    private JFXToggleButton styleBut;
     //刷新按钮
     @FXML
     @EventTrigger("test-message1")
@@ -127,12 +129,14 @@ public class MainController {
 
     @PostConstruct
     public void init() throws FlowException {
-
+        rootPane.getChildren().removeAll(navigationList);
+        rootPane.getChildren().removeAll(leftDrawer);
+        rootPane.getChildren().removeAll(tabPane);
+        navigationList.setEffect(null);
         userLabel.textProperty().bind(ApplicatonStore.nameProperty());
         roleLabel.textProperty().bind(ApplicatonStore.getRoles().asString());
         userButton.textProperty().bind(ApplicatonStore.nameProperty());
         try {
-            skinButton.setGraphic(SVGGlyphLoader.getIcoMoonGlyph(ApplicatonStore.ICON_FONT_KEY + ".skin"));
             homeButton.setGraphic(SVGGlyphLoader.getIcoMoonGlyph(ApplicatonStore.ICON_FONT_KEY + ".home-outline"));
             refreshButton.setGraphic(SVGGlyphLoader.getIcoMoonGlyph(ApplicatonStore.ICON_FONT_KEY + ".shuaxin"));
             rolesBut.setGraphic(SVGGlyphLoader.getIcoMoonGlyph(ApplicatonStore.ICON_FONT_KEY + ".admin"));
@@ -166,12 +170,13 @@ public class MainController {
         tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.ALL_TABS);
         drawersStack.setContent(tabPane);
         drawersStack.toggle(leftDrawer);
+        drawersStack.setEffect(null);
         try {
             addTab("主页", SVGGlyphLoader.getIcoMoonGlyph(ApplicatonStore.ICON_FONT_KEY + ".home-outline"), HomeController.class);
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        styleBut.selectedProperty().bindBidirectional(ApplicatonStore.styleProperty());
         featureResourceConsumer.consumeResource(this);
 
         navigationList.setCellFactory(listView -> new JFXListCell<Object>() {
@@ -369,8 +374,17 @@ public class MainController {
 
     @ActionMethod("showSkinPane")
     private void showSkinPane() throws VetoException, FlowException {
-
-        getPopOver().show(skinButton);
+        String style1 = AppStartup.class.getResource("/css/app-light.css").toExternalForm();
+        String style2 = AppStartup.class.getResource("/css/app-dark.css").toExternalForm();
+        if (styleBut.isSelected()) {
+            styleBut.setText("明亮");
+            styleBut.getScene().getStylesheets().removeAll(style1);
+            styleBut.getScene().getStylesheets().addAll(style2);
+        } else {
+            styleBut.setText("黑暗");
+            styleBut.getScene().getStylesheets().removeAll(style2);
+            styleBut.getScene().getStylesheets().addAll(style1);
+        }
     }
 
 
