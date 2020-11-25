@@ -24,6 +24,7 @@ import io.datafx.controller.flow.container.ContainerAnimations;
 import io.datafx.controller.flow.context.ActionHandler;
 import io.datafx.controller.flow.context.FlowActionHandler;
 import io.datafx.controller.util.VetoException;
+import io.datafx.core.concurrent.ProcessChain;
 import io.datafx.eventsystem.Event;
 import io.datafx.eventsystem.EventProducer;
 import io.datafx.eventsystem.EventTrigger;
@@ -374,17 +375,20 @@ public class MainController {
 
     @ActionMethod("showSkinPane")
     private void showSkinPane() throws VetoException, FlowException {
-        String style1 = AppStartup.class.getResource("/css/app-light.css").toExternalForm();
-        String style2 = AppStartup.class.getResource("/css/app-dark.css").toExternalForm();
-        if (styleBut.isSelected()) {
-            styleBut.setText("明亮");
-            styleBut.getScene().getStylesheets().removeAll(style1);
-            styleBut.getScene().getStylesheets().addAll(style2);
-        } else {
-            styleBut.setText("黑暗");
-            styleBut.getScene().getStylesheets().removeAll(style2);
-            styleBut.getScene().getStylesheets().addAll(style1);
-        }
+        ProcessChain.create().addRunnableInPlatformThread(() -> {
+            String style1 = AppStartup.class.getResource("/css/app-light.css").toExternalForm();
+            String style2 = AppStartup.class.getResource("/css/app-dark.css").toExternalForm();
+            if (styleBut.isSelected()) {
+                styleBut.setText("明亮");
+                styleBut.getScene().getStylesheets().removeAll(style1);
+                styleBut.getScene().getStylesheets().addAll(style2);
+            } else {
+                styleBut.setText("黑暗");
+                styleBut.getScene().getStylesheets().removeAll(style2);
+                styleBut.getScene().getStylesheets().addAll(style1);
+            }
+        }).run();
+
     }
 
 

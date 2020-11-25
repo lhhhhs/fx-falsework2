@@ -2,34 +2,34 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.epri.fx.server.mapper.RsaKeyMapper">
   <resultMap id="BaseResultMap" type="com.epri.fx.server.entity.RsaKey">
-    <id column="KEY" jdbcType="VARCHAR" property="key" />
-    <result column="VALUE" jdbcType="VARCHAR" property="value" />
+    <id column="RSA_KEY" jdbcType="VARCHAR" property="key" />
+    <result column="KEY_VALUE" jdbcType="VARCHAR" property="value" />
   </resultMap>
   <sql id="Base_Column_List">
-    KEY, VALUE
+    RSA_KEY, KEY_VALUE
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from rsa_key
-    where KEY = #{key,jdbcType=VARCHAR}
+    from base_rsa_key
+    where RSA_KEY = #{key,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-    delete from rsa_key
-    where KEY = #{key,jdbcType=VARCHAR}
+    delete from base_rsa_key
+    where RSA_KEY = #{key,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.epri.fx.server.entity.RsaKey">
-    insert into rsa_key (KEY, VALUE)
+    insert into base_rsa_key (RSA_KEY, KEY_VALUE)
     values (#{key,jdbcType=VARCHAR}, #{value,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.epri.fx.server.entity.RsaKey">
-    insert into rsa_key
+    insert into base_rsa_key
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="key != null">
-        KEY,
+        RSA_KEY,
       </if>
       <if test="value != null">
-        VALUE,
+        KEY_VALUE,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -42,17 +42,17 @@
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.epri.fx.server.entity.RsaKey">
-    update rsa_key
+    update base_rsa_key
     <set>
       <if test="value != null">
-        VALUE = #{value,jdbcType=VARCHAR},
+        KEY_VALUE = #{value,jdbcType=VARCHAR},
       </if>
     </set>
-    where KEY = #{key,jdbcType=VARCHAR}
+    where RSA_KEY = #{key,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.epri.fx.server.entity.RsaKey">
-    update rsa_key
+    update base_rsa_key
     set VALUE = #{value,jdbcType=VARCHAR}
-    where KEY = #{key,jdbcType=VARCHAR}
+    where RSA_KEY = #{key,jdbcType=VARCHAR}
   </update>
 </mapper>

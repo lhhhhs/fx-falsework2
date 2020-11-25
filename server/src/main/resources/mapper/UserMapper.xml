@@ -389,6 +389,7 @@
             </if>
         </where>
 
+
     </select>
     <select id="selectMemberByGroupId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
       select u.* from base_user u left join base_group_member gm on gm.user_id = u.id where gm.group_id = #{groupId,jdbcType=INTEGER}
