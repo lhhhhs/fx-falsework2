@@ -1,6 +1,7 @@
 spring:
   profiles:
     active: mysql
+
 #日志输出
 logging:
   level:

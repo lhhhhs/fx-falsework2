@@ -42,7 +42,6 @@ dependencies {
     compile 'io.github.openfeign:feign-ribbon:10.9'
     compile 'io.github.openfeign:feign-slf4j:10.9'
     compile 'com.netflix.ribbon:ribbon-httpclient:2.2.0'
-    compile 'com.dlsc:GMapsFX:2.12.2'
 
 
 
