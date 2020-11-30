@@ -7,9 +7,9 @@ spring:
     druid:
       #url: jdbc:dm://10.105.73.121:12345/EMSHIS
 #      url: jdbc:dm://192.168.1.210:12345/EMSHIS
-      url: jdbc:mysql://${MYSQL_HOST:10.211.55.9}:${MYSQL_PORT:3306}/ipsm_dba?useUnicode=true&characterEncoding=UTF8
+      url: jdbc:mysql://${MYSQL_HOST:10.211.55.3}:${MYSQL_PORT:3306}/ipsm_dba?serverTimezone=Asia/Shanghai
       username: root
-      password: Root@123456
+      password: Root@12345
       driver-class-name: com.mysql.cj.jdbc.Driver
       # 连接池的配置信息
       # 初始化大小，最小，最大
