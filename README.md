@@ -28,25 +28,30 @@
  主页
 
 ![Image text](https://gitee.com/lwdillon/fx-falsework/raw/main/readme/home-dark.png)
+
 ![Image text](https://gitee.com/lwdillon/fx-falsework/raw/main/readme/home-light.png)
 
  用户管理
 
 ![Image text](https://gitee.com/lwdillon/fx-falsework/raw/main/readme/user-dark.png)
+
 ![Image text](https://gitee.com/lwdillon/fx-falsework/raw/main/readme/user-light.png)
 
  菜单管理
 
 ![Image text](https://gitee.com/lwdillon/fx-falsework/raw/main/readme/menu-dark.png)
+
 ![Image text](https://gitee.com/lwdillon/fx-falsework/raw/main/readme/menu-light.png)
 
  角色权限管理
 
 ![Image text](https://gitee.com/lwdillon/fx-falsework/raw/main/readme/group-dark.png)
+
 ![Image text](https://gitee.com/lwdillon/fx-falsework/raw/main/readme/group-light.png)
 
  角色类型管理
 
 ![Image text](https://gitee.com/lwdillon/fx-falsework/raw/main/readme/grouptype-dark.png)
+
 ![Image text](https://gitee.com/lwdillon/fx-falsework/raw/main/readme/grouptype-light.png)
 
