@@ -381,7 +381,7 @@
 }
 
 .jfx-tab-pane .headers-region .tab .tab-container .tab-close-button:hover {
-    -fx-background-color: derive(-fx-text-color, -20%)
+    -fx-background-color: derive(-fx-text-color, 20%)
 
 }
 
@@ -390,11 +390,11 @@
 }
 
 .jfx-tab-pane .headers-region .tab:hover .tab-container .tab-close-button > .jfx-svg-glyph {
-    -fx-background-color: derive(-fx-text-color, -30%);
+    -fx-background-color: derive(-fx-text-color, 30%);
 }
 
 .jfx-tab-pane .headers-region .tab .tab-container .jfx-svg-glyph {
-    -fx-background-color: derive(-fx-text-color, -20%);
+    -fx-background-color: derive(-fx-text-color, 20%);
     -jfx-size: 20;
 }
 
