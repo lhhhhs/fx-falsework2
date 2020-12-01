@@ -187,7 +187,7 @@ public class LoginController {
         registeredPane.managedProperty().bind(registeredPane.visibleProperty());
 
         initAnimation();
-//        loadingImage();
+        loadingImage();
         initAction();
 
     }
@@ -257,7 +257,7 @@ public class LoginController {
 
     private void loadingImage() {
 
-        ImageView logBack = new ImageView("/images/loginBack.jpg");
+        ImageView logBack = new ImageView("/images/login.jpg");
         logBack.fitHeightProperty().bind(imageHeiht);
         logBack.fitWidthProperty().bind(imageWidth);
         imagePane.getChildren().add(new Label("", logBack));

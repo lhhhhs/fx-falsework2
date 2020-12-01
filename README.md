@@ -19,29 +19,34 @@
 
  登录
 
-![Image text](https://gitee.com/lwdillon/fx-falsework/raw/main/client/src/main/resources/images/folder/login.png)
+![Image text](https://gitee.com/lwdillon/fx-falsework/raw/main/readme/login.png)
 
  注册
 
-![Image text](https://gitee.com/lwdillon/fx-falsework/raw/main/client/src/main/resources/images/folder/registered.png)
+![Image text](https://gitee.com/lwdillon/fx-falsework/raw/main/readme/registered.png)
 
  主页
 
-![Image text](https://gitee.com/lwdillon/fx-falsework/raw/main/client/src/main/resources/images/folder/home.png)
+![Image text](https://gitee.com/lwdillon/fx-falsework/raw/main/readme/home-dark.png)
+![Image text](https://gitee.com/lwdillon/fx-falsework/raw/main/readme/home-light.png)
 
  用户管理
 
-![Image text](https://gitee.com/lwdillon/fx-falsework/raw/main/client/src/main/resources/images/folder/user.png)
+![Image text](https://gitee.com/lwdillon/fx-falsework/raw/main/readme/user-dark.png)
+![Image text](https://gitee.com/lwdillon/fx-falsework/raw/main/readme/user-light.png)
 
  菜单管理
 
-![Image text](https://gitee.com/lwdillon/fx-falsework/raw/main/client/src/main/resources/images/folder/menu.png)
+![Image text](https://gitee.com/lwdillon/fx-falsework/raw/main/readme/menu-dark.png)
+![Image text](https://gitee.com/lwdillon/fx-falsework/raw/main/readme/menu-light.png)
 
  角色权限管理
 
-![Image text](https://gitee.com/lwdillon/fx-falsework/raw/main/client/src/main/resources/images/folder/group.png)
+![Image text](https://gitee.com/lwdillon/fx-falsework/raw/main/readme/group-dark.png)
+![Image text](https://gitee.com/lwdillon/fx-falsework/raw/main/readme/group-light.png)
 
  角色类型管理
 
-![Image text](https://gitee.com/lwdillon/fx-falsework/raw/main/client/src/main/resources/images/folder/grouptype.png)
+![Image text](https://gitee.com/lwdillon/fx-falsework/raw/main/readme/grouptype-dark.png)
+![Image text](https://gitee.com/lwdillon/fx-falsework/raw/main/readme/grouptype-light.png)
 
