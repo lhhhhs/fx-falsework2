@@ -15,7 +15,7 @@
     <children>
         <VBox fx:id="centPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="10.0">
             <children>
-                <HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" prefHeight="45.0" prefWidth="200.0" spacing="10.0">
+                <HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" prefHeight="45.0" prefWidth="200.0" spacing="10.0" styleClass="card-pane">
                     <children>
                         <JFXTextField fx:id="searchField" promptText="用户名或账户" />
                         <JFXButton fx:id="searchBut" buttonType="RAISED" text="搜索" />

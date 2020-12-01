@@ -187,7 +187,7 @@ public class LoginController {
         registeredPane.managedProperty().bind(registeredPane.visibleProperty());
 
         initAnimation();
-        loadingImage();
+//        loadingImage();
         initAction();
 
     }

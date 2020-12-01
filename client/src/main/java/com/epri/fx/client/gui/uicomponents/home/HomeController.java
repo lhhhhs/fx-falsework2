@@ -63,6 +63,8 @@ public class HomeController {
 
     public static final Color BACKGROUND_DARK = Color.rgb(39, 49, 66); // #2a2a2a
     public static final Color BACKGROUND_LIGHT = Color.rgb(255, 255, 255); // #2a2a2a
+    public static final Color FOREGROUND_DARK = Color.rgb(223, 223, 223); // #2a2a2a
+    public static final Color FOREGROUND_LIGHT = Color.rgb(52, 52, 52); // #2a2a2a
     public static final Color BORDERCOLOR_DARK = Color.rgb(49, 61, 79); // #2a2a2a
     public static final Color BORDERCOLOR_LIGHT = Color.rgb(185, 185, 185, 0.3f); // #2a2a2a
 
@@ -214,6 +216,14 @@ public class HomeController {
         chartData6 = new ChartData("Item 6", 13.0, Tile.BLUE);
         chartData7 = new ChartData("Item 7", 13.0, Tile.BLUE);
         chartData8 = new ChartData("Item 8", 13.0, Tile.BLUE);
+        chartData1.setTextColor(FOREGROUND_LIGHT);
+        chartData2.setTextColor(FOREGROUND_LIGHT);
+        chartData3.setTextColor(FOREGROUND_LIGHT);
+        chartData4.setTextColor(FOREGROUND_LIGHT);
+        chartData5.setTextColor(FOREGROUND_LIGHT);
+        chartData6.setTextColor(FOREGROUND_LIGHT);
+        chartData7.setTextColor(FOREGROUND_LIGHT);
+        chartData8.setTextColor(FOREGROUND_LIGHT);
         //ChartData.animated = false;
 
         smoothChartData1 = new ChartData("Item 1", RND.nextDouble() * 25, Tile.BLUE);
@@ -223,20 +233,20 @@ public class HomeController {
 
 
         sparkLineTile = TileBuilder.create()
-                .skinType(Tile.SkinType.SPARK_LINE)
+                .skinType(Tile.SkinType.SPARK_LINE).foregroundBaseColor(FOREGROUND_LIGHT)
                 .title("SparkLine Tile")
                 .unit("mb").borderRadius(14)
                 .gradientStops(new Stop(0, Tile.GREEN),
                         new Stop(0.5, Tile.YELLOW),
                         new Stop(1.0, Tile.RED))
                 .strokeWithGradient(true)
-                .backgroundColor(BACKGROUND_DARK).borderColor(BORDERCOLOR_DARK).borderWidth(0.8d)
+                .backgroundColor(BACKGROUND_LIGHT).borderColor(BORDERCOLOR_LIGHT).borderWidth(0.8d)
                 //.smoothing(true)
                 .build();
 
 
         areaChartTile = TileBuilder.create()
-                .skinType(Tile.SkinType.SMOOTHED_CHART).backgroundColor(BACKGROUND_DARK).borderRadius(14).borderColor(BORDERCOLOR_DARK).borderWidth(0.8d)
+                .skinType(Tile.SkinType.SMOOTHED_CHART).foregroundBaseColor(FOREGROUND_LIGHT).backgroundColor(BACKGROUND_LIGHT).borderRadius(14).borderColor(BORDERCOLOR_LIGHT).borderWidth(0.8d)
                 .title("SmoothedChart Tile")
                 .chartType(Tile.ChartType.AREA)
                 //.animated(true)
@@ -251,16 +261,16 @@ public class HomeController {
                 .build();
 
         lineChartTile = TileBuilder.create()
-                .skinType(Tile.SkinType.SMOOTHED_CHART).backgroundColor(BACKGROUND_DARK).borderRadius(14).borderColor(BORDERCOLOR_DARK).borderWidth(0.8d)
+                .skinType(Tile.SkinType.SMOOTHED_CHART).foregroundBaseColor(FOREGROUND_LIGHT).backgroundColor(BACKGROUND_LIGHT).borderRadius(14).borderColor(BORDERCOLOR_LIGHT).borderWidth(0.8d)
                 .title("SmoothedChart Tile")
-                //.animated(true)
+                .animated(true)
                 .smoothing(false)
                 .series(series2, series3)
                 .build();
 
 
         worldTile = TileBuilder.create()
-                .skinType(Tile.SkinType.WORLDMAP).backgroundColor(BACKGROUND_DARK).borderRadius(14).borderColor(BORDERCOLOR_DARK).borderWidth(0.8d)
+                .skinType(Tile.SkinType.WORLDMAP).foregroundBaseColor(FOREGROUND_LIGHT).backgroundColor(BACKGROUND_LIGHT).borderRadius(14).borderColor(BORDERCOLOR_LIGHT).borderWidth(0.8d)
                 .title("WorldMap Tile")
                 .text("Whatever text")
                 .textVisible(false)
@@ -268,7 +278,7 @@ public class HomeController {
 
 
         radialChartTile = TileBuilder.create()
-                .skinType(Tile.SkinType.RADIAL_CHART).backgroundColor(BACKGROUND_DARK).borderRadius(14).borderColor(BORDERCOLOR_DARK).borderWidth(0.8d)
+                .skinType(Tile.SkinType.RADIAL_CHART).foregroundBaseColor(FOREGROUND_LIGHT).backgroundColor(BACKGROUND_LIGHT).borderRadius(14).borderColor(BORDERCOLOR_LIGHT).borderWidth(0.8d)
                 .title("RadialChart")
                 .text("Some text")
                 .textVisible(false)
@@ -277,7 +287,7 @@ public class HomeController {
 
         donutChartTile = TileBuilder.create()
                 .skinType(Tile.SkinType.DONUT_CHART)
-                .title("DonutChart").backgroundColor(BACKGROUND_DARK).borderRadius(14).borderColor(BORDERCOLOR_DARK).borderWidth(0.8d)
+                .title("DonutChart").foregroundBaseColor(FOREGROUND_LIGHT).backgroundColor(BACKGROUND_LIGHT).borderRadius(14).borderColor(BORDERCOLOR_LIGHT).borderWidth(0.8d)
                 .text("Some text")
                 .textVisible(false)
                 .chartData(chartData1, chartData2, chartData3, chartData4)
@@ -285,7 +295,7 @@ public class HomeController {
 
         circularProgressTile = TileBuilder.create()
                 .skinType(Tile.SkinType.CIRCULAR_PROGRESS)
-                .title("CircularProgress").backgroundColor(BACKGROUND_DARK).borderRadius(14).borderColor(BORDERCOLOR_DARK).borderWidth(0.8d)
+                .title("CircularProgress").foregroundBaseColor(FOREGROUND_LIGHT).backgroundColor(BACKGROUND_LIGHT).borderRadius(14).borderColor(BORDERCOLOR_LIGHT).borderWidth(0.8d)
                 .text("Some text")
                 .unit("\u0025")
                 //.graphic(new WeatherSymbol(ConditionAndIcon.CLEAR_DAY, 48, Color.WHITE))
@@ -294,7 +304,7 @@ public class HomeController {
 
         radarChartTile1 = TileBuilder.create().skinType(Tile.SkinType.RADAR_CHART)
                 .minValue(0)
-                .maxValue(50).backgroundColor(BACKGROUND_DARK).borderRadius(14).borderColor(BORDERCOLOR_DARK).borderWidth(0.8d)
+                .maxValue(50).foregroundBaseColor(FOREGROUND_LIGHT).backgroundColor(BACKGROUND_LIGHT).borderRadius(14).borderColor(BORDERCOLOR_LIGHT).borderWidth(0.8d)
                 .title("RadarChart Sector")
                 .unit("Unit")
                 .radarChartMode(RadarChart.Mode.SECTOR)
@@ -318,7 +328,7 @@ public class HomeController {
 
 
         ephemerisTile = TileBuilder.create().skinType(Tile.SkinType.EPHEMERIS)
-                .title("Ephemeris").backgroundColor(BACKGROUND_DARK).borderRadius(14).borderColor(BORDERCOLOR_DARK).borderWidth(0.8d)
+                .title("Ephemeris").foregroundBaseColor(FOREGROUND_LIGHT).backgroundColor(BACKGROUND_LIGHT).borderRadius(14).borderColor(BORDERCOLOR_LIGHT).borderWidth(0.8d)
                 .currentLocation(new Location(51.911515, 7.6340026, "Hiltrup"))
                 .text("Hiltrup")
                 .build();
@@ -335,7 +345,7 @@ public class HomeController {
 
         statusTile = TileBuilder.create()
                 .skinType(Tile.SkinType.STATUS)
-                .title("Status Tile").borderWidth(0.8d).backgroundColor(BACKGROUND_DARK).borderRadius(14).borderColor(BORDERCOLOR_DARK).borderWidth(0.8d)
+                .title("Status Tile").foregroundBaseColor(FOREGROUND_LIGHT).borderWidth(0.8d).backgroundColor(BACKGROUND_LIGHT).borderRadius(14).borderColor(BORDERCOLOR_LIGHT).borderWidth(0.8d)
                 .description("Notifications")
                 .leftText("CRITICAL")
                 .middleText("WARNING")
@@ -426,11 +436,19 @@ public class HomeController {
                     if (newValue) {
                         ((Tile) node).setBackgroundColor(BACKGROUND_DARK);
                         ((Tile) node).setBorderColor(BORDERCOLOR_DARK);
-                        ((Tile) node).setForegroundColor(Color.rgb(223, 223, 223));
+                        ((Tile) node).setForegroundBaseColor(FOREGROUND_DARK);
+                        ((Tile) node).getChartData().forEach(chartData -> {
+                            chartData.setTextColor(FOREGROUND_DARK);
+                        });
+
                     } else {
                         ((Tile) node).setBackgroundColor(BACKGROUND_LIGHT);
                         ((Tile) node).setBorderColor(BORDERCOLOR_LIGHT);
-                        ((Tile) node).setForegroundColor(Color.rgb(84, 84, 84));
+                        ((Tile) node).setForegroundBaseColor(FOREGROUND_LIGHT);
+
+                        ((Tile) node).getChartData().forEach(chartData -> {
+                            chartData.setTextColor(FOREGROUND_LIGHT);
+                        });
 
                     }
                 }

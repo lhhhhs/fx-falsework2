@@ -923,26 +923,22 @@
 }
 
 
-.tile {
-    -BACKGROUND      : rgb(42, 42, 42);
-    -FOREGROUND      : rgb(233, 16, 16);
-    -GRAY            : rgb(139,144,146);
-    -RED             : rgb(229, 80, 76);
-    -LIGHT_RED       : rgb(255, 84, 56);
-    -GREEN           : rgb(143, 198, 94);
-    -LIGHT_GREEN     : rgb(132, 228, 50);
-    -BLUE            : rgb(55, 179, 252);
-    -DARK_BLUE       : rgb(55, 94, 252);
-    -ORANGE          : rgb(237, 162, 57);
-    -YELLOW_ORANGE   : rgb(229, 198, 76);
-    -YELLOW          : rgb(229, 229, 76);
-    -MAGENTA         : rgb(198, 75, 232);
-    -PINK            : rgb(233, 14, 139);
 
-    -foreground-color: -FOREGROUND;
+
+.tile .chart-vertical-grid-lines {
+    -fx-stroke           : #9d9d9d;
+    -fx-stroke-dash-array: null;
 }
 
+.tile .chart-horizontal-grid-lines {
+    -fx-stroke           : #9d9d9d;
+    -fx-stroke-dash-array: null;
+}
 
+.tile .axis {
+    AXIS_COLOR         : #454545;
+    -fx-tick-label-fill: #454545;
+}
 
 
 
