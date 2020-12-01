@@ -23,6 +23,7 @@
     -fx-light-text-color: #404040;
     -fx-text-color: ladder(-fx-main-base, -fx-dark-text-color 29%, -fx-light-text-color 30%);
 
+    -fx-icon-svg-color: rgb(3,115,248)
 
 }
 
@@ -464,6 +465,7 @@
 .navigation-list .jfx-list-cell .label > .jfx-svg-glyph {
     -jfx-size: 20px;
     -fx-alignment: center;
+    -fx-background-color: -fx-icon-svg-color;
 }
 
 .navigation-list .jfx-list-cell:odd:selected > .jfx-rippler > StackPane,
@@ -578,9 +580,9 @@
 .table-view .column-header .label {
     -fx-alignment: center;
     -fx-font-family: "Microsoft YaHei";
-    -fx-font-weight: BOLD;
+    -fx-font-weight: 300;
     -fx-text-fill: -fx-text-color;
-    -fx-font-size: 16px;
+    -fx-font-size: 14px;
 }
 
 /**TableView列头展示隐藏列按钮*/
@@ -925,8 +927,29 @@
 }
 
 
+/*******************************************************************************
+*                                                                              *
+* tile                                                                  *
+*                                                                              *
+*******************************************************************************/
+.tile {
+    -BACKGROUND      : rgb(39, 49, 66);
+    -FOREGROUND      : rgb(223, 223, 223);
+    -GRAY            : rgb(139,144,146);
+    -RED             : rgb(229, 80, 76);
+    -LIGHT_RED       : rgb(255, 84, 56);
+    -GREEN           : rgb(143, 198, 94);
+    -LIGHT_GREEN     : rgb(132, 228, 50);
+    -BLUE            : rgb(55, 179, 252);
+    -DARK_BLUE       : rgb(55, 94, 252);
+    -ORANGE          : rgb(237, 162, 57);
+    -YELLOW_ORANGE   : rgb(229, 198, 76);
+    -YELLOW          : rgb(229, 229, 76);
+    -MAGENTA         : rgb(198, 75, 232);
+    -PINK            : rgb(233, 14, 139);
 
-
+    -foreground-color: -FOREGROUND;
+}
 .tile .chart-vertical-grid-lines {
     -fx-stroke           : #797979;
     -fx-stroke-dash-array: null;

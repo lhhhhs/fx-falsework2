@@ -133,7 +133,6 @@ public class MainController {
         rootPane.getChildren().removeAll(navigationList);
         rootPane.getChildren().removeAll(leftDrawer);
         rootPane.getChildren().removeAll(tabPane);
-        navigationList.setEffect(null);
         userLabel.textProperty().bind(ApplicatonStore.nameProperty());
         roleLabel.textProperty().bind(ApplicatonStore.getRoles().asString());
         userButton.textProperty().bind(ApplicatonStore.nameProperty());
@@ -210,7 +209,7 @@ public class MainController {
 
             }
         });
-        navigationList.depthProperty().setValue(1);
+        navigationList.depthProperty().setValue(0);
         navigationList.expandedProperty().set(true);
         initData();
     }
@@ -292,10 +291,12 @@ public class MainController {
                 for (MenuVO menuVO : childrenMenus) {
                     listView.getItems().add(menuVO);
                 }
+                listView.setExpanded(true);
                 navigationList.getItems().add(listView);
 
             }
         }
+
 
     }
 

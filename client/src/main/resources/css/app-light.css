@@ -13,7 +13,7 @@
     -fx-accent-suspension-color: rgba(72, 128, 255, 0.13);
     /*边框颜色*/
     -fx-border-base: rgba(185, 185, 185, .3);;
-    -fx-cell-border-base: rgba(185, 185, 185, .3);
+    -fx-cell-border-base: rgba(185, 185, 185, 0.7);
 
     -fx-font-base14: 14px;
     -fx-font-base16: 16px;
@@ -25,6 +25,7 @@
     -fx-light-text-color: #404040;
     -fx-text-color: ladder(-fx-main-base, -fx-dark-text-color 29%, -fx-light-text-color 30%);
 
+    -fx-icon-svg-color: rgb(3,115,248)
 
 }
 
@@ -121,7 +122,7 @@
     -fx-text-fill: -fx-text-color;
     -fx-background-insets: 0;
     -fx-background-color: -fx-bar-base;
-    -fx-border-color: rgba(207, 207, 207, 0.11);
+    -fx-border-color: rgba(207, 207, 207, 0.5);
     -fx-background-radius: 14 0 0 14;
     -fx-border-radius: 14 0 0 14;
     -fx-padding: 0.333333em 0.666667em 0.333333em 0.75em; /* 4 8 4 9 */
@@ -130,7 +131,7 @@
 .center-pill {
     -fx-text-fill: -fx-text-color;
     -fx-background-color: -fx-bar-base;
-    -fx-border-color: rgba(207, 207, 207, 0.11);
+    -fx-border-color: rgba(207, 207, 207, 0.5);
     -fx-border-width: 1 1 1 0;
     -fx-background-radius: 0;
     -fx-background-insets: 0;
@@ -139,7 +140,7 @@
 .right-pill {
     -fx-text-fill: -fx-text-color;
     -fx-background-color: -fx-bar-base;
-    -fx-border-color: rgba(207, 207, 207, 0.11);
+    -fx-border-color: rgba(207, 207, 207, 0.5);
     -fx-background-radius: 0 14 14 0;
     -fx-border-radius: 0 14 14 0;
     -fx-border-width: 1 1 1 0;
@@ -148,7 +149,7 @@
 }
 
 .left-pill:hover {
-    -fx-background-color: derive(-fx-bar-base, 20%)
+    -fx-background-color: derive(-fx-bar-base, -20%)
 }
 
 .left-pill:focused {
@@ -157,7 +158,7 @@
 }
 
 .left-pill:pressed {
-    -fx-background-color: derive(-fx-bar-base, 30%)
+    -fx-background-color: derive(-fx-bar-base, -30%)
 }
 
 .center-pill:focused {
@@ -166,11 +167,11 @@
 }
 
 .center-pill:hover {
-    -fx-background-color: derive(-fx-bar-base, 20%)
+    -fx-background-color: derive(-fx-bar-base, -20%)
 }
 
 .center-pill:pressed {
-    -fx-background-color: derive(-fx-bar-base, 30%)
+    -fx-background-color: derive(-fx-bar-base, -30%)
 }
 
 .right-pill:focused {
@@ -179,11 +180,11 @@
 }
 
 .right-pill:hover {
-    -fx-background-color: derive(-fx-bar-base, 20%)
+    -fx-background-color: derive(-fx-bar-base, -20%)
 }
 
 .right-pill:pressed {
-    -fx-background-color: derive(-fx-bar-base, 30%)
+    -fx-background-color: derive(-fx-bar-base, -30%)
 }
 
 .toggle-button:selected .left-pill:focused {
@@ -465,6 +466,7 @@
 .navigation-list .jfx-list-cell .label > .jfx-svg-glyph {
     -jfx-size: 20px;
     -fx-alignment: center;
+    -fx-background-color: -fx-icon-svg-color;
 }
 
 .navigation-list .jfx-list-cell:odd:selected > .jfx-rippler > StackPane,
@@ -579,9 +581,9 @@
 .table-view .column-header .label {
     -fx-alignment: center;
     -fx-font-family: "Microsoft YaHei";
-    -fx-font-weight: BOLD;
+    -fx-font-weight: 300;
     -fx-text-fill: -fx-text-color;
-    -fx-font-size: 16px;
+    -fx-font-size: 14px;
 }
 
 /**TableView列头展示隐藏列按钮*/
@@ -923,8 +925,29 @@
 }
 
 
+/*******************************************************************************
+*                                                                              *
+* tile                                                                  *
+*                                                                              *
+*******************************************************************************/
+.tile {
+    -BACKGROUND      : rgb(255, 255, 255);
+    -FOREGROUND      : rgb(52, 52, 52);
+    -GRAY            : rgb(139,144,146);
+    -RED             : rgb(229, 80, 76);
+    -LIGHT_RED       : rgb(255, 84, 56);
+    -GREEN           : rgb(143, 198, 94);
+    -LIGHT_GREEN     : rgb(132, 228, 50);
+    -BLUE            : rgb(55, 179, 252);
+    -DARK_BLUE       : rgb(55, 94, 252);
+    -ORANGE          : rgb(237, 162, 57);
+    -YELLOW_ORANGE   : rgb(229, 198, 76);
+    -YELLOW          : rgb(229, 229, 76);
+    -MAGENTA         : rgb(198, 75, 232);
+    -PINK            : rgb(233, 14, 139);
 
-
+    -foreground-color: -FOREGROUND;
+}
 .tile .chart-vertical-grid-lines {
     -fx-stroke           : #9d9d9d;
     -fx-stroke-dash-array: null;
