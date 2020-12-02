@@ -66,8 +66,7 @@ public class MainController {
     @ActionHandler
     private FlowActionHandler actionHandler;
 
-    @FXML
-    private JFXToolbar toolBar;    //工具栏
+
     @FXML
     private StackPane rootPane;
     @FXML

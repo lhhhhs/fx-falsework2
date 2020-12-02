@@ -28,7 +28,7 @@
 }
 
 .backgroundPane {
-    -fx-background-color: -fx-main-base;
+    -fx-background-color: -fx-card-base;
 }
 
 .jfx-svg-glyph {
@@ -209,7 +209,7 @@
 *******************************************************************************/
 
 .lfx-decorator {
-    -fx-decorator-color: -fx-card-base;
+    -fx-decorator-color: -fx-main-base;
     -fx-background-color: transparent;
 
 }
@@ -336,7 +336,7 @@
 
 
 .jfx-tab-pane .tab-header-background {
-    -fx-background-color: -fx-main-base;
+    -fx-background-color: -fx-card-base;
 }
 
 .jfx-tab-pane .headers-region .tab-selected-line {
@@ -406,9 +406,9 @@
     -fx-background-color: -fx-accent-suspension-color;
 }
 
-/*.tab-content {*/
-/*    -fx-background-color: -fx-card-base;*/
-/*}*/
+.tab-content {
+    -fx-background-color: -fx-main-base;
+}
 
 /*******************************************************************************
 *                                                                              *
