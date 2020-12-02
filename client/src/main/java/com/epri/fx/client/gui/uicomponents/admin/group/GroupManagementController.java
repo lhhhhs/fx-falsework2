@@ -53,11 +53,17 @@ public class GroupManagementController {
 //                groupDataModel.setSelectedGroupType(newValue.);
             }
         });
-        ProcessChain.create()
+        initData();
+
+    }
+
+    private void initData() {
+        ProcessChain.create().addRunnableInPlatformThread(() -> {
+            tabPane.getTabs().clear();
+        })
                 .addSupplierInExecutor(() -> Request.connector(GroupTypeFeign.class).getAllGroupTypes())
                 .addConsumerInPlatformThread(rel -> {
                     for (GroupTypeVO groupType : rel) {
-
                         Tab tab = new Tab(groupType.getName());
                         Flow flow = new Flow(GroupDetailController.class);
                         ViewFlowContext viewFlowContext = new ViewFlowContext();
@@ -74,8 +80,11 @@ public class GroupManagementController {
                 .run();
     }
 
-    @OnEvent("test-message")
-    private void onNewChatMessage(Event<String> e) {
+    @OnEvent("refresh")
+    private void onRefresh(Event<String> e) {
         System.err.println(this.getClass() + "\t" + e.getContent());
+
+        initData();
+
     }
 }

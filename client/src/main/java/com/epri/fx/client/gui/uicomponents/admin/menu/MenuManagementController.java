@@ -176,9 +176,9 @@ public class MenuManagementController {
         deleteButton.setToggleGroup(group);
 
         try {
-            addButton.setGraphic(SVGGlyphLoader.getIcoMoonGlyph(ApplicatonStore.ICON_FONT_KEY+".add-circle-outline"));
-            editButton.setGraphic(SVGGlyphLoader.getIcoMoonGlyph(ApplicatonStore.ICON_FONT_KEY+".create-outline"));
-            deleteButton.setGraphic(SVGGlyphLoader.getIcoMoonGlyph(ApplicatonStore.ICON_FONT_KEY+".trash-outline"));
+            addButton.setGraphic(SVGGlyphLoader.getIcoMoonGlyph(ApplicatonStore.ICON_FONT_KEY + ".add-circle-outline"));
+            editButton.setGraphic(SVGGlyphLoader.getIcoMoonGlyph(ApplicatonStore.ICON_FONT_KEY + ".create-outline"));
+            deleteButton.setGraphic(SVGGlyphLoader.getIcoMoonGlyph(ApplicatonStore.ICON_FONT_KEY + ".trash-outline"));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -260,7 +260,7 @@ public class MenuManagementController {
         parentIdTextField.setDisable(true);
 
         cancelButton.setOnAction(event -> {
-           infoPane.setDisable(true);
+            infoPane.setDisable(true);
         });
 
 
@@ -686,8 +686,11 @@ public class MenuManagementController {
         dialog.close();
     }
 
-    @OnEvent("test-message")
-    private void onNewChatMessage(Event<String> e) {
+    @OnEvent("refresh")
+    private void onRefresh(Event<String> e) {
         System.err.println(this.getClass() + "\t" + e.getContent());
+
+        initTreeData();
+
     }
 }

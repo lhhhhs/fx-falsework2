@@ -25,6 +25,8 @@ import io.datafx.controller.flow.context.ActionHandler;
 import io.datafx.controller.flow.context.FlowActionHandler;
 import io.datafx.controller.util.VetoException;
 import io.datafx.core.concurrent.ProcessChain;
+import io.datafx.eventsystem.Event;
+import io.datafx.eventsystem.OnEvent;
 import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
@@ -376,5 +378,13 @@ public class UserManagementController {
     @FXML
     private void test() {
         System.err.println();
+    }
+
+    @OnEvent("refresh")
+    private void onRefresh(Event<String> e) {
+        System.err.println(this.getClass() + "\t" + e.getContent());
+
+        search();
+
     }
 }

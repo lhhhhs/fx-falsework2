@@ -15,6 +15,8 @@ import io.datafx.controller.flow.action.ActionTrigger;
 import io.datafx.controller.flow.context.FXMLViewFlowContext;
 import io.datafx.controller.flow.context.ViewFlowContext;
 import io.datafx.core.concurrent.ProcessChain;
+import io.datafx.eventsystem.Event;
+import io.datafx.eventsystem.OnEvent;
 import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
@@ -306,4 +308,11 @@ public class GroupTypeManagementController {
     }
 
 
+    @OnEvent("refresh")
+    private void onRefresh(Event<String> e) {
+        System.err.println(this.getClass() + "\t" + e.getContent());
+
+        initData();
+
+    }
 }

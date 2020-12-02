@@ -89,7 +89,7 @@ public class MainController {
     private JFXToggleButton styleBut;
     //刷新按钮
     @FXML
-    @EventTrigger("test-message1")
+    @EventTrigger("refresh")
     private JFXButton refreshButton;
 
     //内容面板tabPane
@@ -224,15 +224,12 @@ public class MainController {
         return popOver;
     }
 
-    @EventProducer("test-message")
-    private String getMessage() {
+    @EventProducer("refresh")
+    private String refresh() {
         return "--------=================-----------";
     }
 
-    @EventProducer("test-message1")
-    private String getMessage1() {
-        return "--------=================-----------";
-    }
+
 
     private void initData() {
 
