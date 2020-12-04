@@ -4,6 +4,8 @@ package com.epri.fx.server.interceptor;
 import com.epri.fx.server.config.UserConfiguration;
 import com.epri.fx.server.context.BaseContextHandler;
 import com.epri.fx.server.jwt.IJWTInfo;
+import com.epri.fx.server.service.PermissionService;
+import com.epri.fx.server.service.log.GateLogService;
 import com.epri.fx.server.util.user.JwtTokenUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,6 +25,10 @@ public class UserAuthRestInterceptor extends HandlerInterceptorAdapter {
     private JwtTokenUtil jwtTokenUtil;
     @Autowired
     private UserConfiguration userConfiguration;
+    @Autowired
+    private GateLogService gateLogService;
+    @Autowired
+    private PermissionService permissionService;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -32,6 +38,7 @@ public class UserAuthRestInterceptor extends HandlerInterceptorAdapter {
         BaseContextHandler.setUsername(infoFromToken.getUniqueName());
         BaseContextHandler.setName(infoFromToken.getName());
         BaseContextHandler.setUserID(infoFromToken.getId());
+
         return super.preHandle(request, response, handler);
     }
 
@@ -40,4 +47,5 @@ public class UserAuthRestInterceptor extends HandlerInterceptorAdapter {
         BaseContextHandler.remove();
         super.afterCompletion(request, response, handler, ex);
     }
+
 }

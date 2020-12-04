@@ -37,7 +37,7 @@ public class GroupTypeService {
     public Integer addGroupType(GroupTypeVO groupTypeVO) {
         GroupType groupType = new GroupType();
         BeanUtils.copyProperties(groupTypeVO, groupType);
-        EntityUtils.setCreateInfo(groupType);
+        EntityUtils.setCreatAndUpdatInfo(groupType);
         groupType.setId(null);
        return groupTypeMapper.insertSelective(groupType);
     }

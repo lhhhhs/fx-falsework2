@@ -48,6 +48,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.inject.Inject;
 import java.lang.reflect.InvocationTargetException;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 
 /**
@@ -120,6 +121,7 @@ public class MainController {
     private JFXDrawer leftDrawer;
 
     @FXML
+    @EventTrigger("refresh")
     private JFXDatePicker datePicker;
     @Inject
     private FeatureResourceConsumer featureResourceConsumer;
@@ -144,6 +146,9 @@ public class MainController {
             e.printStackTrace();
         }
         datePicker.setEditable(false);
+        datePicker.valueProperty().addListener((observable, oldValue, newValue) ->{
+            refreshButton.fire();
+        });
         leftDrawer.setSidePane(navigationList);
         leftDrawer.setOverLayVisible(false);
         leftDrawer.setResizeContent(true);
@@ -226,7 +231,7 @@ public class MainController {
 
     @EventProducer("refresh")
     private String refresh() {
-        return "--------=================-----------";
+        return datePicker.getValue().format(DateTimeFormatter.ofPattern("yyyyMMdd"));
     }
 
 

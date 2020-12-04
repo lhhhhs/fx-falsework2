@@ -24,6 +24,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -47,7 +48,11 @@ public class GroupTypeManagementController {
     private ViewFlowContext viewFlowContext;
 
     @FXML
+    private VBox contentPane;
+    @FXML
     private StackPane rootPane;
+    @FXML
+    private JFXSpinner viewSpinner;
     @FXML
     private JFXProgressBar progressBar;
     @FXML
@@ -100,9 +105,13 @@ public class GroupTypeManagementController {
 
         progressBar.visibleProperty().bind(dialog.disableProperty());
         progressBar.managedProperty().bind(progressBar.visibleProperty());
+
         updateButton.visibleProperty().bind(saveButton.visibleProperty().not());
         updateButton.managedProperty().bind(updateButton.visibleProperty());
+        saveButton.managedProperty().bind(saveButton.visibleProperty());
+
         cancelButton.disableProperty().bind(saveButton.disableProperty().or(updateButton.disableProperty()));
+        viewSpinner.visibleProperty().bind(contentPane.disableProperty());
 
         serialNumberColumn.setCellFactory((col) -> {
             TableCell<GroupTypeVO, String> cell = new TableCell<GroupTypeVO, String>() {
@@ -202,11 +211,16 @@ public class GroupTypeManagementController {
     }
 
     private void loadingTableData() {
-        ProcessChain.create()
+        ProcessChain.create().addRunnableInPlatformThread(() -> {
+            contentPane.setDisable(true);
+        })
                 .addSupplierInExecutor(() -> Request.connector(GroupTypeFeign.class).getAllGroupTypes())
                 .addConsumerInPlatformThread(rel -> {
                     groupTypeDataModel.getGroupTypes().clear();
-                    groupTypeDataModel.getGroupTypes().addAll(rel);})
+                    groupTypeDataModel.getGroupTypes().addAll(rel);
+                }).withFinal(() -> {
+            contentPane.setDisable(false);
+        })
                 .run();
     }
 
@@ -236,7 +250,7 @@ public class GroupTypeManagementController {
         ProcessChain.create().addRunnableInPlatformThread(() -> dialog.setDisable(true))
                 .addSupplierInExecutor(() -> Request.connector(GroupTypeFeign.class).addGroupType(groupTypeVO))
                 .addConsumerInPlatformThread(rel -> {
-                    if (rel >=0) {
+                    if (rel >= 0) {
                         loadingTableData();
                     }
                 }).withFinal(() -> {

@@ -11,9 +11,10 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
+<?import com.jfoenix.controls.JFXSpinner?>
 <StackPane fx:id="rootPane" prefHeight="384.0" prefWidth="585.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <VBox spacing="7.0">
+        <VBox fx:id="contentPane" spacing="7.0">
             <children>
             <HBox alignment="CENTER_RIGHT" spacing="10.0" styleClass="card-pane">
                <children>
@@ -38,6 +39,7 @@
                 </TableView>
             </children>
         </VBox>
+        <JFXSpinner fx:id="viewSpinner" radius="18" startingAngle="90" styleClass="blue-spinner" visible="false" />
 
         <JFXDialog fx:id="dialog" transitionType="TOP">
             <JFXDialogLayout>

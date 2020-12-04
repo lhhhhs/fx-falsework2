@@ -2,6 +2,7 @@ package com.epri.fx.server.config;
 
 
 import com.epri.fx.server.handler.GlobalExceptionHandler;
+import com.epri.fx.server.interceptor.LogInterceptor;
 import com.epri.fx.server.interceptor.UserAuthRestInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,7 +19,7 @@ import java.util.Collections;
  */
 @Configuration("admimWebConfig")
 @Primary
-public class WebConfiguration implements WebMvcConfigurer {
+public class  WebConfiguration implements WebMvcConfigurer {
     @Bean
     GlobalExceptionHandler getGlobalExceptionHandler() {
         return new GlobalExceptionHandler();
@@ -27,12 +28,17 @@ public class WebConfiguration implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(getUserAuthRestInterceptor()).addPathPatterns(getIncludePathPatterns());
+        registry.addInterceptor(getLogInterceptor()).addPathPatterns(getIncludePathPatterns());
     }
 
 
     @Bean
     UserAuthRestInterceptor getUserAuthRestInterceptor() {
         return new UserAuthRestInterceptor();
+    }
+    @Bean
+    LogInterceptor getLogInterceptor() {
+        return new LogInterceptor();
     }
 
 

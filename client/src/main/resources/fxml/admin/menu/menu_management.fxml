@@ -46,7 +46,7 @@
                                         <TreeView fx:id="treeView" VBox.vgrow="ALWAYS" />
                                     </children>
                                 </VBox>
-                                <JFXSpinner fx:id="treeViewSpinner" radius="13" startingAngle="0" styleClass="blue-spinner" visible="false" />
+                                <JFXSpinner fx:id="treeViewSpinner" radius="18.0" startingAngle="90.0" styleClass="blue-spinner" visible="false" />
                             </children>
                         </StackPane>
                     </children>

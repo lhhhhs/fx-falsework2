@@ -5,6 +5,7 @@ import com.epri.fx.client.model.GroupDataModel;
 import com.epri.fx.client.request.Request;
 import com.epri.fx.client.request.feign.admin.GroupTypeFeign;
 import com.epri.fx.server.vo.GroupTypeVO;
+import com.jfoenix.controls.JFXSpinner;
 import com.jfoenix.controls.JFXTabPane;
 import io.datafx.controller.ViewController;
 import io.datafx.controller.flow.Flow;
@@ -40,13 +41,15 @@ public class GroupManagementController {
     private StackPane rootPane;
     @Inject
     private GroupDataModel groupDataModel;
+    @FXML
+    private JFXSpinner viewSpinner;
 
     @PostConstruct
     private void init() {
 
         TextField textField = new TextField();
         textField.setStyle("");
-
+        viewSpinner.visibleProperty().bind(tabPane.disableProperty());
         tabPane.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Tab>() {
             @Override
             public void changed(ObservableValue<? extends Tab> observable, Tab oldValue, Tab newValue) {
@@ -60,6 +63,7 @@ public class GroupManagementController {
     private void initData() {
         ProcessChain.create().addRunnableInPlatformThread(() -> {
             tabPane.getTabs().clear();
+            tabPane.setDisable(true);
         })
                 .addSupplierInExecutor(() -> Request.connector(GroupTypeFeign.class).getAllGroupTypes())
                 .addConsumerInPlatformThread(rel -> {
@@ -76,7 +80,9 @@ public class GroupManagementController {
                         }
                         tabPane.getTabs().add(tab);
                     }
-                }).onException(e -> e.printStackTrace())
+                }).onException(e -> e.printStackTrace()).withFinal(() -> {
+            tabPane.setDisable(false);
+        })
                 .run();
     }
 
