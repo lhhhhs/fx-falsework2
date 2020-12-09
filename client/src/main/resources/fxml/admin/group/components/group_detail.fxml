@@ -42,15 +42,15 @@
                 </HBox>
                 <SplitPane dividerPositions="0.29797979797979796" VBox.vgrow="ALWAYS">
                     <items>
-                        <VBox maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minWidth="250.0" prefWidth="250.0" spacing="7.0" styleClass="card-pane">
+                        <VBox maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minWidth="250.0" prefWidth="250.0" scaleX="0.95" scaleY="0.95" spacing="7.0" styleClass="card-pane">
                             <children>
                                 <JFXTextField fx:id="treeSearchTextField" promptText="输入关键字过滤" />
                                 <JFXTreeView fx:id="treeView" VBox.vgrow="ALWAYS" />
                             </children>
                         </VBox>
-                        <StackPane styleClass="card-pane">
+                        <StackPane scaleX="0.95" scaleY="0.95" styleClass="card-pane">
                             <children>
-                                <VBox fx:id="contentPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="367.0" prefWidth="380.0" styleClass="card-pane" StackPane.alignment="CENTER">
+                                <VBox fx:id="contentPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="367.0" prefWidth="380.0" StackPane.alignment="CENTER">
                                     <children>
                                         <GridPane alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" vgap="15.0" VBox.vgrow="ALWAYS">
                                             <columnConstraints>
@@ -101,9 +101,6 @@
                             </children>
                         </StackPane>
                     </items>
-                    <VBox.margin>
-                        <Insets />
-                    </VBox.margin>
                 </SplitPane>
             </children>
         </VBox>

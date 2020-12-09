@@ -32,42 +32,42 @@
 
         <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="600.0">
             <children>
-            <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="50.0" spacing="5.0" VBox.vgrow="ALWAYS">
-               <children>
-                             <JFXHamburger fx:id="navigationButton" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="40.0">
-                                 <animation>
-                                     <HamburgerSlideCloseTransition />
-                                 </animation>
-                                 <padding>
-                                     <Insets left="5.0" />
-                                 </padding>
-                             </JFXHamburger>
-                         <JFXButton fx:id="homeButton" contentDisplay="GRAPHIC_ONLY" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="40.0" styleClass="tool-bar-button" />
-                         <JFXButton fx:id="refreshButton" contentDisplay="GRAPHIC_ONLY" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="40.0" styleClass="tool-bar-button" />
-                         <JFXDatePicker fx:id="datePicker" editable="false" maxWidth="150">
-                             <HBox.margin>
-                                 <Insets />
-                             </HBox.margin>
-                             <padding>
-                                 <Insets bottom="7.0" />
-                             </padding>
-                         </JFXDatePicker>
+                <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="50.0" spacing="5.0" styleClass="tool-pane" VBox.vgrow="ALWAYS">
+                    <children>
+                        <JFXHamburger fx:id="navigationButton" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="40.0">
+                            <animation>
+                                <HamburgerSlideCloseTransition />
+                            </animation>
+                            <padding>
+                                <Insets left="5.0" />
+                            </padding>
+                        </JFXHamburger>
+                        <JFXButton fx:id="homeButton" contentDisplay="GRAPHIC_ONLY" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="40.0" styleClass="tool-bar-button" />
+                        <JFXButton fx:id="refreshButton" contentDisplay="GRAPHIC_ONLY" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="40.0" styleClass="tool-bar-button" />
+                        <JFXDatePicker fx:id="datePicker" editable="false" maxWidth="150">
+                            <HBox.margin>
+                                <Insets />
+                            </HBox.margin>
+                            <padding>
+                                <Insets bottom="7.0" />
+                            </padding>
+                        </JFXDatePicker>
 
 
                         <HBox alignment="CENTER_RIGHT" spacing="5.0" HBox.hgrow="ALWAYS">
-                     <JFXToggleButton fx:id="styleBut" text="暗色" />
+                            <JFXToggleButton fx:id="styleBut" text="暗色" />
                             <JFXButton fx:id="rolesBut" contentDisplay="GRAPHIC_ONLY" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" styleClass="tool-bar-button" text="user" textFill="WHITE" />
                             <VBox alignment="CENTER">
                                 <Label fx:id="userLabel" maxWidth="1.7976931348623157E308" style="-fx-font-size: 16;-fx-font-weight: bold" text="李稳" VBox.vgrow="ALWAYS" />
                                 <Label fx:id="roleLabel" maxWidth="1.7976931348623157E308" style="-fx-font-size: 10;" text="管理员" VBox.vgrow="ALWAYS" />
                             </VBox>
                             <JFXButton fx:id="userButton" contentDisplay="GRAPHIC_ONLY" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" prefHeight="20.0" prefWidth="20.0" styleClass="tool-bar-button" text="user" textFill="WHITE" />
-                     <padding>
-                        <Insets right="5.0" />
-                     </padding>
+                            <padding>
+                                <Insets right="5.0" />
+                            </padding>
                         </HBox>
-               </children>
-            </HBox>
+                    </children>
+                </HBox>
 
                 <JFXDrawersStack fx:id="drawersStack" VBox.vgrow="ALWAYS" />
                 <JFXDrawer id="navigation-menu" fx:id="leftDrawer" defaultDrawerSize="240.0" overLayVisible="false" />

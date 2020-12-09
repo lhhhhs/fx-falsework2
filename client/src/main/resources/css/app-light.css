@@ -25,12 +25,17 @@
     -fx-light-text-color: #404040;
     -fx-text-color: ladder(-fx-main-base, -fx-dark-text-color 29%, -fx-light-text-color 30%);
 
-    -fx-icon-svg-color: rgb(3,115,248)
+    -fx-icon-svg-color: rgb(3, 115, 248)
 
 }
 
 .backgroundPane {
     -fx-background-color: -fx-card-base;
+}
+
+.tool-pane{
+    -fx-border-color: -fx-border-base;
+    -fx-border-width: 0 0 0.45 0;
 }
 
 .jfx-svg-glyph {
@@ -45,17 +50,19 @@
     -fx-background-color: -fx-card-base;
     -fx-padding: 10;
     -fx-background-radius: 14px;
-    -fx-border-color: -fx-border-base;
+    -fx-border-color: transparent;
     -fx-border-width: 1px;
     -fx-border-radius: 14px;
+    -fx-effect: dropshadow(gaussian, #8f959c, 12, 0.2, 0, 0);
+
 }
 
-
-/*******************************************************************************
-*                                                                              *
-* text和label                                                                *
-*                                                                              *
-*******************************************************************************/
+.
+    /*******************************************************************************
+    *                                                                              *
+    * text和label                                                                *
+    *                                                                              *
+    *******************************************************************************/
 .label {
     -fx-text-fill: -fx-text-color;
     -fx-font-family: "Microsoft YaHei";
@@ -106,6 +113,7 @@
     -fx-background-color: -fx-accent-color;
     -fx-text-fill: -fx-text-color;
     -jfx-button-type: RAISED;
+
 }
 
 .jfx-button > MaterialDesignIconView, .toggle-button > MaterialDesignIconView {
@@ -114,7 +122,8 @@
     -fx-prompt-text-fill: -fx-text-color;
     -jfx-size: 16px;
 }
-.jfx-toggle-button{
+
+.jfx-toggle-button {
     -fx-text-fill: -fx-text-color;
 }
 
@@ -492,7 +501,7 @@
     -jfx-rippler-fill: derive(-fx-accent-color, -20%);
 }
 
-#navigation-menu{
+#navigation-menu {
     -fx-background-color: #F9F9F9;
 }
 
@@ -935,35 +944,39 @@
 *                                                                              *
 *******************************************************************************/
 .tile {
-    -BACKGROUND      : rgb(255, 255, 255);
-    -FOREGROUND      : rgb(52, 52, 52);
-    -GRAY            : rgb(139,144,146);
-    -RED             : rgb(229, 80, 76);
-    -LIGHT_RED       : rgb(255, 84, 56);
-    -GREEN           : rgb(143, 198, 94);
-    -LIGHT_GREEN     : rgb(132, 228, 50);
-    -BLUE            : rgb(55, 179, 252);
-    -DARK_BLUE       : rgb(55, 94, 252);
-    -ORANGE          : rgb(237, 162, 57);
-    -YELLOW_ORANGE   : rgb(229, 198, 76);
-    -YELLOW          : rgb(229, 229, 76);
-    -MAGENTA         : rgb(198, 75, 232);
-    -PINK            : rgb(233, 14, 139);
+    -BACKGROUND: rgb(255, 255, 255);
+    -FOREGROUND: rgb(52, 52, 52);
+    -GRAY: rgb(139, 144, 146);
+    -RED: rgb(229, 80, 76);
+    -LIGHT_RED: rgb(255, 84, 56);
+    -GREEN: rgb(143, 198, 94);
+    -LIGHT_GREEN: rgb(132, 228, 50);
+    -BLUE: rgb(55, 179, 252);
+    -DARK_BLUE: rgb(55, 94, 252);
+    -ORANGE: rgb(237, 162, 57);
+    -YELLOW_ORANGE: rgb(229, 198, 76);
+    -YELLOW: rgb(229, 229, 76);
+    -MAGENTA: rgb(198, 75, 232);
+    -PINK: rgb(233, 14, 139);
 
     -foreground-color: -FOREGROUND;
+
+    -fx-effect: dropshadow(gaussian, #8f959c, 12, 0, 0, 0);
+
 }
+
 .tile .chart-vertical-grid-lines {
-    -fx-stroke           : #9d9d9d;
+    -fx-stroke: #9d9d9d;
     -fx-stroke-dash-array: null;
 }
 
 .tile .chart-horizontal-grid-lines {
-    -fx-stroke           : #9d9d9d;
+    -fx-stroke: #9d9d9d;
     -fx-stroke-dash-array: null;
 }
 
 .tile .axis {
-    AXIS_COLOR         : #454545;
+    AXIS_COLOR: #454545;
     -fx-tick-label-fill: #454545;
 }
 

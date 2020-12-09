@@ -139,7 +139,7 @@ public class MainController {
         userButton.textProperty().bind(ApplicatonStore.nameProperty());
         try {
             homeButton.setGraphic(SVGGlyphLoader.getIcoMoonGlyph(ApplicatonStore.ICON_FONT_KEY + ".home-outline"));
-            refreshButton.setGraphic(SVGGlyphLoader.getIcoMoonGlyph(ApplicatonStore.ICON_FONT_KEY + ".shuaxin"));
+            refreshButton.setGraphic(SVGGlyphLoader.getIcoMoonGlyph(ApplicatonStore.ICON_FONT_KEY + ".shuaxin1"));
             rolesBut.setGraphic(SVGGlyphLoader.getIcoMoonGlyph(ApplicatonStore.ICON_FONT_KEY + ".admin"));
             userButton.setGraphic(SVGGlyphLoader.getIcoMoonGlyph(ApplicatonStore.ICON_FONT_KEY + ".ChevronDownCircle"));
         } catch (Exception e) {

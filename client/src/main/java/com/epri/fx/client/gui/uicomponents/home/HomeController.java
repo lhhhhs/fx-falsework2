@@ -273,7 +273,7 @@ public class HomeController {
                 .skinType(Tile.SkinType.WORLDMAP).foregroundBaseColor(FOREGROUND_LIGHT).backgroundColor(BACKGROUND_LIGHT).borderRadius(14).borderColor(BORDERCOLOR_LIGHT).borderWidth(0.8d)
                 .title("WorldMap Tile")
                 .text("Whatever text")
-                .textVisible(false)
+                .textVisible(false).shadowsEnabled(true)
                 .build();
 
 
@@ -282,7 +282,7 @@ public class HomeController {
                 .title("RadialChart")
                 .text("Some text")
                 .textVisible(false)
-                .chartData(chartData1, chartData2, chartData3, chartData4)
+                .chartData(chartData1, chartData2, chartData3, chartData4).shadowsEnabled(true)
                 .build();
 
         donutChartTile = TileBuilder.create()
@@ -437,6 +437,7 @@ public class HomeController {
                         ((Tile) node).setBackgroundColor(BACKGROUND_DARK);
                         ((Tile) node).setBorderColor(BORDERCOLOR_DARK);
                         ((Tile) node).setForegroundBaseColor(FOREGROUND_DARK);
+                        ((Tile) node).setShadowsEnabled(true);
                         ((Tile) node).getChartData().forEach(chartData -> {
                             chartData.setTextColor(FOREGROUND_DARK);
                         });
@@ -445,7 +446,7 @@ public class HomeController {
                         ((Tile) node).setBackgroundColor(BACKGROUND_LIGHT);
                         ((Tile) node).setBorderColor(BORDERCOLOR_LIGHT);
                         ((Tile) node).setForegroundBaseColor(FOREGROUND_LIGHT);
-
+                        ((Tile) node).setShadowsEnabled(true);
                         ((Tile) node).getChartData().forEach(chartData -> {
                             chartData.setTextColor(FOREGROUND_LIGHT);
                         });
