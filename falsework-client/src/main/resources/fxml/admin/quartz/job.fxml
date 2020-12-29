@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+
+<VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="600.0" spacing="5.0">
+         <children>
+            <JFXTextField promptText="任务名称" />
+            <JFXComboBox promptText="任务分组" />
+            <JFXComboBox promptText="任务状态" />
+            <JFXButton text="搜索" />
+            <JFXButton text="重置" />
+         </children>
+      </HBox>
+      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="600.0" spacing="5.0">
+               <children>
+                  <JFXButton text="新增" />
+                  <JFXButton text="导出" />
+                  <JFXButton text="日志" />
+               </children>
+            </HBox>
+            <TableView prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+              <columns>
+                <TableColumn prefWidth="75.0" text="任务编号" />
+                <TableColumn prefWidth="75.0" text="任务名称" />
+                  <TableColumn prefWidth="75.0" text="任务分组" />
+                  <TableColumn prefWidth="75.0" text="调用目标字符串" />
+                  <TableColumn prefWidth="75.0" text="执行表达式" />
+                  <TableColumn prefWidth="75.0" text="任务状态" />
+                  <TableColumn prefWidth="75.0" text="创建时间" />
+                  <TableColumn prefWidth="75.0" text="操作" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+         </children>
+      </VBox>
+   </children>
+</VBox>
