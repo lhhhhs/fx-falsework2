@@ -8,7 +8,6 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>falsework-client</artifactId>
 
     <properties>
@@ -16,6 +15,8 @@
         <maven.compiler.target>8</maven.compiler.target>
         <feign.version>10.9</feign.version>
         <java.version>1.8</java.version>
+        <datafx.version>8.0.2</datafx.version>
+        <jfoenix.version>8.0.10</jfoenix.version>
     </properties>
 
 
@@ -34,21 +35,21 @@
             <artifactId>jfoenix</artifactId>
             <version>${jfoenix.version}</version>
             <scope>system</scope>
-            <systemPath>${basedir}/libs/jfoenix-8.0.10.jar</systemPath>
+            <systemPath>${pom.basedir}/libs/jfoenix-8.0.10.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>datafx-flow</groupId>
             <artifactId>datafx-flow</artifactId>
             <version>${datafx.version}</version>
             <scope>system</scope>
-            <systemPath>${basedir}/libs/datafx-flow-8.0.2-SNAPSHOT.jar</systemPath>
+            <systemPath>${pom.basedir}/libs/datafx-flow-8.0.2-SNAPSHOT.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>tilesfx</groupId>
             <artifactId>tilesfx</artifactId>
             <version>1.6.8</version>
             <scope>system</scope>
-            <systemPath>${basedir}/libs/tilesfx-1.6.8.jar</systemPath>
+            <systemPath>${pom.basedir}/libs/tilesfx-1.6.8.jar</systemPath>
         </dependency>
 
         <dependency>
@@ -56,21 +57,21 @@
             <artifactId>datafx-injection</artifactId>
             <version>${datafx.version}</version>
             <scope>system</scope>
-            <systemPath>${basedir}/libs/datafx-injection-8.0.2-SNAPSHOT.jar</systemPath>
+            <systemPath>${pom.basedir}/libs/datafx-injection-8.0.2-SNAPSHOT.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>datafx-eventsystem</groupId>
             <artifactId>datafx-eventsystem</artifactId>
             <version>${datafx.version}</version>
             <scope>system</scope>
-            <systemPath>${basedir}/libs/datafx-eventsystem-8.0.2-SNAPSHOT.jar</systemPath>
+            <systemPath>${pom.basedir}/libs/datafx-eventsystem-8.0.2-SNAPSHOT.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>datafx-core</groupId>
             <artifactId>datafx-core</artifactId>
             <version>${datafx.version}</version>
             <scope>system</scope>
-            <systemPath>${basedir}/libs/datafx-core-8.0.2-SNAPSHOT.jar</systemPath>
+            <systemPath>${pom.basedir}/libs/datafx-core-8.0.2-SNAPSHOT.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>javax.inject</groupId>
