@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-import com.fx.server.vo.UserVO;
-=======
->>>>>>> 6fa352c50bee89ed3f768a2360e651f447f94c96
+
 import javafx.application.Application;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ListProperty;
