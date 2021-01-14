@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.epri.fx.server.mapper.ElementMapper">
-    <resultMap id="BaseResultMap" type="com.epri.fx.server.entity.Element">
+<mapper namespace="com.fx.server.mapper.ElementMapper">
+    <resultMap id="BaseResultMap" type="com.fx.server.entity.Element">
         <id column="id" jdbcType="INTEGER" property="id"/>
         <result column="code" jdbcType="VARCHAR" property="code"/>
         <result column="type" jdbcType="VARCHAR" property="type"/>
@@ -39,7 +39,7 @@
     delete from base_element
     where id = #{id,jdbcType=INTEGER}
   </delete>
-    <insert id="insert" parameterType="com.epri.fx.server.entity.Element">
+    <insert id="insert" parameterType="com.fx.server.entity.Element">
     insert into base_element (id, code, type, 
       name, uri, menu_id, 
       parent_id, path, method, 
@@ -57,7 +57,7 @@
       #{attr5,jdbcType=VARCHAR}, #{attr6,jdbcType=VARCHAR}, #{attr7,jdbcType=VARCHAR}, 
       #{attr8,jdbcType=VARCHAR})
   </insert>
-    <insert id="insertSelective" parameterType="com.epri.fx.server.entity.Element">
+    <insert id="insertSelective" parameterType="com.fx.server.entity.Element">
         insert into base_element
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -196,7 +196,7 @@
             </if>
         </trim>
     </insert>
-    <update id="updateByPrimaryKeySelective" parameterType="com.epri.fx.server.entity.Element">
+    <update id="updateByPrimaryKeySelective" parameterType="com.fx.server.entity.Element">
         update base_element
         <set>
             <if test="code != null">
@@ -265,7 +265,7 @@
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
-    <update id="updateByPrimaryKey" parameterType="com.epri.fx.server.entity.Element">
+    <update id="updateByPrimaryKey" parameterType="com.fx.server.entity.Element">
     update base_element
     set code = #{code,jdbcType=VARCHAR},
       type = #{type,jdbcType=VARCHAR},

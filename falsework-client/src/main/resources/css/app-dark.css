@@ -26,7 +26,12 @@
     -fx-icon-svg-color: rgb(3,115,248)
 
 }
-
+#waring{
+    -fx-background-color: #06488a;
+}
+.waringbut{
+    -fx-background-color: #6e57e5;
+}
 .backgroundPane {
     -fx-background-color: -fx-card-base;
 }
@@ -320,6 +325,8 @@
     -fx-background-color: TRANSPARENT
 }
 
+
+
 .tool-bar-button > .jfx-svg-glyph {
     -fx-fill: -fx-text-color;
     -fx-text-fill: -fx-text-color;
@@ -333,6 +340,22 @@
 
 .tool-bar-button:focused {
     -fx-background-color: TRANSPARENT
+}
+.tool-bar-toggle {
+    -fx-fill: -fx-text-color;
+    -fx-text-fill: -fx-text-color;
+    -fx-pref-height: 32;
+    -fx-pref-width: 32;
+    -fx-background-radius: 16;
+    -fx-background-color: derive(-fx-main-base, 10%)
+}
+
+
+.tool-bar-toggle > .jfx-svg-glyph {
+    -fx-fill: -fx-text-color;
+    -fx-text-fill: -fx-text-color;
+    -fx-prompt-text-fill: -fx-text-color;
+    -jfx-size: 20px;
 }
 
 /*******************************************************************************
@@ -387,7 +410,7 @@
 }
 
 .jfx-tab-pane .headers-region .tab .tab-container .tab-close-button:hover {
-    -fx-background-color: derive(-fx-text-color, -20%)
+    -fx-background-color: derive(-fx-text-color, -50%)
 
 }
 
@@ -977,6 +1000,30 @@
 }
 
 
+#status-success-label {
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #1ea681;
+    -fx-background-radius: 10;
+    -fx-padding: 5 10 5 10;
+}
 
+#status-error-label {
+    -fx-background-color: #e63c53;
+    -fx-background-radius: 10;
+    -fx-text-fill: #ffffff;
+    -fx-padding: 5 10 5 10;
+}
 
+.icons-badge .badge-pane {
+    -fx-background-color: #ff4081;
+    -fx-background-radius: 20;
+    -fx-pref-width: 20;
+    -fx-pref-height: 20;
+    -fx-alignment: center;
+}
+
+.icons-badge Label {
+    -fx-font-size: 14.0px;
+    -fx-text-fill: WHITE;
+}
 

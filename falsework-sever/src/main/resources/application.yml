@@ -5,7 +5,7 @@ spring:
 #日志输出
 logging:
   level:
-    com.epri.fx.server: debug
+    com.fx.server: debug
 
 jwt:
   token-header: Authorization

@@ -104,6 +104,7 @@ public class MyStackedAreaChart<X, Y> extends LineChart<X, Y> {
 
             VBox vBox = new VBox();
             vBox.setSpacing(5);
+            vBox.getChildren().add(new Label(xValue.toString()));
             for (int i = 0; i < getData().size(); i++) {
                 Series<X, Y> series = getData().get(i);
                 series.getNode().getStyle();

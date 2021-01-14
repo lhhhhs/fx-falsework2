@@ -8,7 +8,7 @@
         <version>2.4.1</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.epri</groupId>
+    <groupId>com.fx</groupId>
     <artifactId>falsework-sever</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>falsework-sever</name>
@@ -106,11 +106,7 @@
             <scope>system</scope>
             <systemPath>${basedir}/libs/DmJdbcDriver-1.0.0.jar</systemPath>
         </dependency>
-        <dependency>
-            <groupId>commons-codec</groupId>
-            <artifactId>commons-codec</artifactId>
-            <version>1.14</version>
-        </dependency>
+
         <dependency>
             <groupId>pinyin4j</groupId>
             <artifactId>pinyin4j</artifactId>

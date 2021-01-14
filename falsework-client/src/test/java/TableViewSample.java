@@ -1,4 +1,4 @@
-import com.epri.fx.server.vo.UserVO;
+import com.fx.server.vo.UserVO;
 import javafx.application.Application;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ListProperty;

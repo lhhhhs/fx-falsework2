@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.epri.fx.server.mapper.MenuMapper">
-    <resultMap id="BaseResultMap" type="com.epri.fx.server.entity.Menu">
+<mapper namespace="com.fx.server.mapper.MenuMapper">
+    <resultMap id="BaseResultMap" type="com.fx.server.entity.Menu">
         <id column="id" jdbcType="INTEGER" property="id"/>
         <result column="code" jdbcType="VARCHAR" property="code"/>
         <result column="title" jdbcType="VARCHAR" property="title"/>
@@ -46,7 +46,7 @@
     delete from base_menu
     where id = #{id,jdbcType=INTEGER}
   </delete>
-    <insert id="insert" parameterType="com.epri.fx.server.entity.Menu">
+    <insert id="insert" parameterType="com.fx.server.entity.Menu">
     insert into base_menu (id, code, title, 
       parent_id, href, icon, 
       type, order_num, description, 
@@ -68,7 +68,7 @@
       #{attr6,jdbcType=VARCHAR}, #{attr7,jdbcType=VARCHAR}, #{attr8,jdbcType=VARCHAR}
       )
   </insert>
-    <insert id="insertSelective" parameterType="com.epri.fx.server.entity.Menu">
+    <insert id="insertSelective" parameterType="com.fx.server.entity.Menu">
         insert into base_menu
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -237,7 +237,7 @@
             </if>
         </trim>
     </insert>
-    <update id="updateByPrimaryKeySelective" parameterType="com.epri.fx.server.entity.Menu">
+    <update id="updateByPrimaryKeySelective" parameterType="com.fx.server.entity.Menu">
         update base_menu
         <set>
             <if test="code != null">
@@ -321,7 +321,7 @@
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
-    <update id="updateByPrimaryKey" parameterType="com.epri.fx.server.entity.Menu">
+    <update id="updateByPrimaryKey" parameterType="com.fx.server.entity.Menu">
     update base_menu
     set code = #{code,jdbcType=VARCHAR},
       title = #{title,jdbcType=VARCHAR},

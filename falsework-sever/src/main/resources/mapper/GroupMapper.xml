@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.epri.fx.server.mapper.GroupMapper">
-    <resultMap id="BaseResultMap" type="com.epri.fx.server.entity.Group">
+<mapper namespace="com.fx.server.mapper.GroupMapper">
+    <resultMap id="BaseResultMap" type="com.fx.server.entity.Group">
         <id column="id" jdbcType="INTEGER" property="id"/>
         <result column="code" jdbcType="VARCHAR" property="code"/>
         <result column="name" jdbcType="VARCHAR" property="name"/>
@@ -42,7 +42,7 @@
     delete from base_group
     where id = #{id,jdbcType=INTEGER}
   </delete>
-    <insert id="insert" parameterType="com.epri.fx.server.entity.Group">
+    <insert id="insert" parameterType="com.fx.server.entity.Group">
     insert into base_group (id, code, name, 
       parent_id, path, type, 
       group_type, description, crt_time, 
@@ -62,7 +62,7 @@
       #{attr6,jdbcType=VARCHAR}, #{attr7,jdbcType=VARCHAR}, #{attr8,jdbcType=VARCHAR}
       )
   </insert>
-    <insert id="insertSelective" parameterType="com.epri.fx.server.entity.Group">
+    <insert id="insertSelective" parameterType="com.fx.server.entity.Group">
         insert into base_group
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -213,7 +213,7 @@
             </if>
         </trim>
     </insert>
-    <update id="updateByPrimaryKeySelective" parameterType="com.epri.fx.server.entity.Group">
+    <update id="updateByPrimaryKeySelective" parameterType="com.fx.server.entity.Group">
         update base_group
         <set>
             <if test="code != null">
@@ -288,7 +288,7 @@
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
-    <update id="updateByPrimaryKey" parameterType="com.epri.fx.server.entity.Group">
+    <update id="updateByPrimaryKey" parameterType="com.fx.server.entity.Group">
     update base_group
     set code = #{code,jdbcType=VARCHAR},
       name = #{name,jdbcType=VARCHAR},

@@ -9,7 +9,6 @@
 
 
     <modules>
-        <module>falseworik-client</module>
         <module>falsework-client</module>
     </modules>
     <properties>

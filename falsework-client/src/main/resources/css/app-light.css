@@ -33,7 +33,7 @@
     -fx-background-color: -fx-card-base;
 }
 
-.tool-pane{
+.tool-pane {
     -fx-border-color: -fx-border-base;
     -fx-border-width: 0 0 0.45 0;
 }
@@ -57,12 +57,12 @@
 
 }
 
-.
-    /*******************************************************************************
-    *                                                                              *
-    * text和label                                                                *
-    *                                                                              *
-    *******************************************************************************/
+
+/*******************************************************************************
+*                                                                              *
+* text和label                                                                *
+*                                                                              *
+*******************************************************************************/
 .label {
     -fx-text-fill: -fx-text-color;
     -fx-font-family: "Microsoft YaHei";
@@ -111,9 +111,8 @@
 .jfx-button {
     -fx-padding: 0.47em 0.47em;
     -fx-background-color: -fx-accent-color;
-    -fx-text-fill: -fx-text-color;
+    -fx-text-fill: #ffffff;
     -jfx-button-type: RAISED;
-
 }
 
 .jfx-button > MaterialDesignIconView, .toggle-button > MaterialDesignIconView {
@@ -338,6 +337,22 @@
     -fx-background-color: TRANSPARENT
 }
 
+.tool-bar-toggle {
+    -fx-fill: -fx-text-color;
+    -fx-text-fill: -fx-text-color;
+    -fx-pref-height: 32;
+    -fx-pref-width: 32;
+    -fx-background-radius: 16;
+    -fx-background-color:  ladder(-fx-main-base, rgba(255, 255, 255, .2) 29%, rgba(0, 0, 0, .2) 30%);
+}
+
+.tool-bar-toggle > .jfx-svg-glyph {
+    -fx-fill: -fx-text-color;
+    -fx-text-fill: -fx-text-color;
+    -fx-prompt-text-fill: -fx-text-color;
+    -jfx-size: 20px;
+}
+
 /*******************************************************************************
 *                                                                              *
 * JFX TabPane                                                          *
@@ -390,7 +405,7 @@
 }
 
 .jfx-tab-pane .headers-region .tab .tab-container .tab-close-button:hover {
-    -fx-background-color: derive(-fx-text-color, 20%)
+    -fx-background-color: derive(-fx-text-color, 90%)
 
 }
 
@@ -439,7 +454,7 @@
 
 .jfx-list-cell:filled:hover,
 .jfx-list-cell:selected .label {
-    -fx-text-fill: -fx-text-color;
+    -fx-text-fill: #ffffff;
 }
 
 .jfx-list-cell .jfx-rippler {
@@ -634,9 +649,9 @@
     -fx-background-color: transparent;
 }
 
-.table-row-cell .text {
-    -fx-fill: -fx-text-color;
-}
+/*.table-row-cell .text {*/
+/*    -fx-fill: -fx-text-color;*/
+/*}*/
 
 /*TableView的单元之间去掉没有数据的竖线 */
 .table-view .table-row-cell:empty, .table-view .table-row-cell:empty .table-cell {
@@ -980,10 +995,33 @@
     -fx-tick-label-fill: #454545;
 }
 
+#status-success-label {
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #1ea681;
+    -fx-background-radius: 10;
+    -fx-padding: 5 10 5 10;
+}
+
+#status-error-label {
+    -fx-background-color: #e63c53;
+    -fx-background-radius: 10;
+    -fx-text-fill: #ffffff;
+    -fx-padding: 5 10 5 10;
+}
 
 
+.icons-badge .badge-pane {
+    -fx-background-color: #ff4081;
+    -fx-background-radius: 20;
+    -fx-pref-width: 20;
+    -fx-pref-height: 20;
+    -fx-alignment: center;
+}
 
-
+.icons-badge Label {
+    -fx-font-size: 14.0px;
+    -fx-text-fill: WHITE;
+}
 
 
 

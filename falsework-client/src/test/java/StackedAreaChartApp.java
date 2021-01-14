@@ -29,10 +29,7 @@ public class StackedAreaChartApp extends Application {
     private StackPane pane;
     private CategoryAxis xAxis;
     private NumberAxis yAxis;
-    private Circle selector;
     private Line selectorLine;
-    private List<Path> strokePaths;
-    private Tooltip selectorTooltip;
 
 
     public MyStackedAreaChart createContent() {
@@ -70,18 +67,11 @@ public class StackedAreaChartApp extends Application {
                                 ))
                 );
         chart = new MyStackedAreaChart(xAxis, yAxis, areaChartData);
-        chart.setCreateSymbols(true);
+        chart.setCreateSymbols(false);
         return chart;
     }
 
-    private StackPane createPane(){
-        selectorLine = new Line();
-        selectorLine.setFill(Color.WHEAT);
-        selectorLine.setStrokeWidth(5f);
-        pane = new StackPane();
-        pane.getChildren().addAll(createContent(),selectorLine);
-        return pane;
-    }
+
 
 
 
