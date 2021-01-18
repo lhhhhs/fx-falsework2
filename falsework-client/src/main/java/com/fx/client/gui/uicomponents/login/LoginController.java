@@ -198,7 +198,7 @@ public class LoginController {
         translateTransition.setToY(centerPane.getLayoutY());
 
         ParallelTransition parallelTransition = new ParallelTransition();
-        parallelTransition.setDelay(Duration.millis(1500));
+        parallelTransition.setDelay(Duration.millis(1000));
         parallelTransition.getChildren().addAll(
                 fadeTransition,
                 translateTransition
