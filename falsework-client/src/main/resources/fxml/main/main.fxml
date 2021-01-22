@@ -83,11 +83,11 @@
                     </children>
                 </HBox>
 
-                <JFXDrawersStack fx:id="drawersStack" VBox.vgrow="ALWAYS" />
-                <JFXDrawer id="navigation-menu" fx:id="leftDrawer" defaultDrawerSize="240.0" overLayVisible="false" />
-                <JFXTabPane fx:id="tabPane" />
-                <JFXListView fx:id="navigationList" maxWidth="-Infinity" minWidth="240.0" prefWidth="240.0" styleClass="navigation-list" />
-
+                <JFXDrawersStack fx:id="drawersStack" VBox.vgrow="ALWAYS" >
+                    <content>
+                        <JFXTabPane fx:id="tabPane" />
+                    </content>
+                </JFXDrawersStack>
             </children>
         </VBox>
     </children>

@@ -68,7 +68,6 @@ public class MainController {
 
     @FXML
     private StackPane rootPane;
-    @FXML
     private JFXListView<Object> navigationList;
     @FXML
     private Pane backgroundPicturePane;
@@ -115,7 +114,6 @@ public class MainController {
     @FXML
     private JFXDrawersStack drawersStack;
 
-    @FXML
     private JFXDrawer leftDrawer;
 
     @FXML
@@ -130,10 +128,17 @@ public class MainController {
     @PostConstruct
     public void init() throws FlowException {
 
+        navigationList=new JFXListView<>();
+        navigationList.getStyleClass().add("navigation-list");
+        leftDrawer = new JFXDrawer();
+        leftDrawer.setId("navigation-menu");
+        leftDrawer.setSidePane(navigationList);
+        leftDrawer.setDefaultDrawerSize(240);
+        leftDrawer.setResizeContent(true);
+        leftDrawer.setOverLayVisible(false);
+        leftDrawer.setResizableOnDrag(true);
+
         ApplicationContext.getInstance().register(this, MainController.class);
-        rootPane.getChildren().removeAll(navigationList);
-        rootPane.getChildren().removeAll(leftDrawer);
-        rootPane.getChildren().removeAll(tabPane);
         userLabel.textProperty().bind(ApplicatonStore.nameProperty());
         roleLabel.textProperty().bind(ApplicatonStore.getRoles().asString());
         userButton.textProperty().bind(ApplicatonStore.nameProperty());
@@ -198,7 +203,6 @@ public class MainController {
             }
 
         });
-        drawersStack.setContent(tabPane);
         drawersStack.toggle(leftDrawer);
         drawersStack.setEffect(null);
 
