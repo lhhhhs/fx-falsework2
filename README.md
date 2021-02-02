@@ -1,5 +1,5 @@
 # fx-falsework
-基于javafx、spring boot 开发的客户端与服务端系统开发脚手架  
+基于javafx、spring boot 开发的客户端与服务端系统开发脚手架。本项目目的是帮助快速构建javafx系统，前后端分离，客户端UI提供明暗两种主题，与服务端通信用的是OpenFeign。服务端是标准的spring-boot工程。
 
 # 说明：  
 
