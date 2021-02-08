@@ -77,10 +77,10 @@ public class LoginController {
     @FXML
     private StackPane centerPane;
 
-    //正面视图
+    /*正面视图*/
     @FXML
     public HBox loginPane;
-    //反面视图
+    /*反面视图*/
     @FXML
     public HBox registeredPane;
     @FXML
@@ -113,11 +113,11 @@ public class LoginController {
     private JFXPasswordField rePwd2TextField;
     @FXML
     private RegexValidator regexValidatorPwd2;
-    //翻转角度
+    /*翻转角度*/
     private DoubleProperty angleProperty = new SimpleDoubleProperty(Math.PI / 2);
-    //正面翻转特效
+    /*正面翻转特效*/
     private PerspectiveTransform frontEffect = new PerspectiveTransform();
-    //反面翻转特效
+    /*反面翻转特效*/
     private PerspectiveTransform backEffect = new PerspectiveTransform();
     private Timeline frontTimeLine = new Timeline();
     private Timeline backTimeLine = new Timeline();
@@ -127,9 +127,6 @@ public class LoginController {
     private DoubleProperty imageWidth = new SimpleDoubleProperty();
     private DoubleProperty imageHeiht = new SimpleDoubleProperty();
 
-
-//    @Inject
-//    private WebSocketManagement webSocketManagement;
 
     @FXML
     @ActionTrigger("login")
@@ -261,7 +258,7 @@ public class LoginController {
         logBack.fitWidthProperty().bind(imageWidth);
         imagePane.getChildren().add(new Label("", logBack));
 
-        String imgUrl=this.getClass().getClassLoader().getResource("").toURI().getPath()+"images/login";
+        String imgUrl = this.getClass().getClassLoader().getResource("").toURI().getPath() + "images/login";
         System.err.println(imgUrl);
         List<File> files = Arrays.asList(new File(imgUrl).listFiles());
 
@@ -408,7 +405,7 @@ public class LoginController {
                     ObjectRestResponse<String> rel = Request.connector(LoginFeign.class).login(jwtAuthenticationRequest);
                     if (rel.getStatus() == 200) {
                         WSClient.getInstance().addHeader("Authorization", rel.getData());
-                        WSClient.getInstance().addHeader("userName",userNameTextField.getText());
+                        WSClient.getInstance().addHeader("userName", userNameTextField.getText());
                         WSClient.getInstance().connect();
 
                     }

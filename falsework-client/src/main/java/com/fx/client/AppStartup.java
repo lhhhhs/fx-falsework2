@@ -27,7 +27,7 @@ import java.io.InputStream;
 
 
 /**
- * @description:
+ * @description: 应用启动类
  * @className: AppStartup
  * @author: liwen
  * @date: 2019-08-26 16:24
@@ -55,17 +55,12 @@ public class AppStartup extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        String keyPrefix = "";
-//        //全局样式
-//        setUserAgentStylesheet(null);
-//        StyleManager.getInstance().addUserAgentStylesheet("css/app-light.css");
 
         new Thread(() -> {
             try {
                 SVGGlyphLoader.loadGlyphsFont(AppStartup.class.getResourceAsStream("/fonts/icon_font/iconfont.svg"),
                         ApplicatonStore.ICON_FONT_KEY);
-//                SVGGlyphLoader.loadGlyphsFont(AppStartup.class.getResourceAsStream("/fonts/icon_font/icon-font-solid.svg"),
-//                        "IconFontSolid.svg");
+
             } catch (IOException ioExc) {
                 ioExc.printStackTrace();
             }
@@ -83,15 +78,13 @@ public class AppStartup extends Application {
         wfxDecorator.setCustomMaximize(true);
         wfxDecorator.setGraphic(new SVGGlyph(""));
 
-
-
         Scene scene = new Scene(wfxDecorator, 1000, 750);
         stage.setTitle("JavaFX Welcome");
         scene.setFill(Color.TRANSPARENT);
         stage.setScene(scene);
         stage.show();
 
-
+        /*全局样式*/
         scene.getStylesheets().addAll(JFoenixResources.load("/css/app-fonts.css").toExternalForm(), AppStartup.class.getResource("/css/login.css").toExternalForm(), AppStartup.class.getResource("/css/app-light.css").toExternalForm());
 
     }
@@ -100,5 +93,9 @@ public class AppStartup extends Application {
     public void stop() throws Exception {
         WSClient.getInstance().close();
 
+    }
+
+    public static void main(String[] args) {
+        launch(args);
     }
 }

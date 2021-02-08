@@ -321,4 +321,5 @@
     where menu_id = #{menuId,jdbcType=INTEGER}
   </delete>
 
+
 </mapper>

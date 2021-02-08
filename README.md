@@ -1,6 +1,8 @@
 # fx-falsework
 基于javafx、spring boot 开发的客户端与服务端系统开发脚手架。本项目目的是帮助快速构建javafx系统，前后端分离，客户端UI提供明暗两种主题，与服务端通信用的是OpenFeign。服务端是标准的spring-boot工程。
 
+#qq交流群：114697782
+
 # 说明：  
 
     1.当前数据库为达梦数据库，可自行换其它数据库，在server端引入所用数据库jar，并修改server端application.yml相应配置即可  
@@ -16,7 +18,7 @@
     6.用户名：admin 密码：111111
     
     7.提供明色和暗色两个主题
-    
+
 # 界面：
 
  登录

@@ -19,6 +19,14 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
+/**
+ * @author liwen
+ * @Description: WebSocketMessageHandler
+ * @param:
+ * @return:
+ * @auther: liwen
+ * @date: 2021/2/4 9:27 下午
+ */
 @Slf4j
 @Component
 public class WebSocketMessageHandler extends TextWebSocketHandler {
@@ -28,8 +36,10 @@ public class WebSocketMessageHandler extends TextWebSocketHandler {
      */
     private static ConcurrentHashMap<String, WebSocketSession> WEBSOCKET_MAP = new ConcurrentHashMap<>();
 
-    //静态变量，用来记录当前在线连接数。应该把它设计成线程安全的。
-    private static AtomicInteger onlineNum = new AtomicInteger();
+    /**
+     * 静态变量，用来记录当前在线连接数。应该把它设计成线程安全的。
+     */
+    private static final AtomicInteger ONLINE_NUM = new AtomicInteger();
     @Autowired
     private SysLoginInfoService sysLoginInfoService;
 
@@ -39,17 +49,19 @@ public class WebSocketMessageHandler extends TextWebSocketHandler {
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
         log.info("建立连接成功");
-        String userId = (String) session.getAttributes().get(CommonConstants.WEB_SOCKET_USER_ID);//将在拦截器中保存的用户的名字取出来,然后作为 key 存到 map 中
+        /* 将在拦截器中保存的用户的名字取出来,然后作为 key 存到 map 中 */
+        String userId = (String) session.getAttributes().get(CommonConstants.WEB_SOCKET_USER_ID);
         SysLoginInfor sysLoginInfor = (SysLoginInfor) session.getAttributes().get(CommonConstants.WEB_SOCKET_USER_LIST);
 
         if (userId != null) {
-            WEBSOCKET_MAP.put(userId, session);//保存当前的连接和用户之间的关系
-            // 在线数加1
+            /* 保存当前的连接和用户之间的关系 */
+            WEBSOCKET_MAP.put(userId, session);
+            /* 在线数加1 */
             addOnlineCount();
-            log.info("客户端" + sysLoginInfor.getLoginName() + "加入，当前在线数为：" + onlineNum.get());
+            log.info("客户端" + sysLoginInfor.getLoginName() + "加入，当前在线数为：" + ONLINE_NUM.get());
             sendMessageToUser(userId, new TextMessage(userId + "WebSocket连接成功"));
         }
-        // 这块会实现自己业务，比如，当用户登录后，会把离线消息推送给用户
+        /* 这块会实现自己业务，比如，当用户登录后，会把离线消息推送给用户 */
 
     }
 
@@ -76,16 +88,20 @@ public class WebSocketMessageHandler extends TextWebSocketHandler {
     }
 
     /**
-     * 给某个用户发送消息
-     *
-     * @param userId
-     * @param message
+     * @Description: 给某个用户发送消息
+     * @param: [userId, message]
+     * @return: void
+     * @auther: liwen
+     * @date: 2021/2/4 9:27 下午
      */
     public void sendMessageToUser(String userId, TextMessage message) {
-        WebSocketSession webSocketSession = WEBSOCKET_MAP.get(userId);//根据接收方的名字找到对应的连接
-        if (webSocketSession != null && webSocketSession.isOpen()) {//如果没有离线,如果离线,请根据实际业务需求来处理,可能会需要保存离线消息
+        /* 根据接收方的名字找到对应的连接 */
+        WebSocketSession webSocketSession = WEBSOCKET_MAP.get(userId);
+        //如果没有离线,如果离线,请根据实际业务需求来处理,可能会需要保存离线消息
+        if (webSocketSession != null && webSocketSession.isOpen()) {
             try {
-                webSocketSession.sendMessage(message);//发送消息
+                /* 发送消息 */
+                webSocketSession.sendMessage(message);
             } catch (IOException e) {
                 log.error(e.getMessage(), e);
             }
@@ -93,14 +109,17 @@ public class WebSocketMessageHandler extends TextWebSocketHandler {
     }
 
     /**
-     * 给所有在线用户发送消息,此处以文本消息为例子
-     *
-     * @param message
+     * @Description: 给所有在线用户发送消息, 此处以文本消息为例子
+     * @param: [message]
+     * @return: void
+     * @auther: liwen
+     * @date: 2021/2/4 9:29 下午
      */
     public void sendMessageToUsers(TextMessage message) {
-        for (Map.Entry<String, WebSocketSession> webSocketSessionEntry : WEBSOCKET_MAP.entrySet()) {//获取所有的连接
-
-            WebSocketSession session = webSocketSessionEntry.getValue();//找到每个连接
+        /* 获取所有的连接 */
+        for (Map.Entry<String, WebSocketSession> webSocketSessionEntry : WEBSOCKET_MAP.entrySet()) {
+            /* 找到每个连接 */
+            WebSocketSession session = webSocketSessionEntry.getValue();
             if (session != null && session.isOpen()) {
                 try {
                     session.sendMessage(message);
@@ -126,9 +145,9 @@ public class WebSocketMessageHandler extends TextWebSocketHandler {
         }
 
         log.error("WebSocket发生错误");
-
-        WEBSOCKET_MAP.remove(userId);//移除连接
-        // 在线数减1
+        /* 移除连接 */
+        WEBSOCKET_MAP.remove(userId);
+        /* 在线数减1 */
         subOnlineCount();
 
         SysLoginInfor sysLoginInfor = (SysLoginInfor) session.getAttributes().get(CommonConstants.WEB_SOCKET_USER_LIST);
@@ -146,17 +165,18 @@ public class WebSocketMessageHandler extends TextWebSocketHandler {
      */
     @Override
     public void afterConnectionClosed(WebSocketSession session, CloseStatus closeStatus) throws Exception {
-        String userId = (String) session.getAttributes().get(CommonConstants.WEB_SOCKET_USER_ID);//找到用户对应的连接
+        /* 找到用户对应的连接 */
+        String userId = (String) session.getAttributes().get(CommonConstants.WEB_SOCKET_USER_ID);
 
-        // 从map中删除
+        /* 从map中删除 */
         WEBSOCKET_MAP.remove(userId);
-        // 在线数减1
+        /* 在线数减1 */
         subOnlineCount();
         SysLoginInfor sysLoginInfor = (SysLoginInfor) session.getAttributes().get(CommonConstants.WEB_SOCKET_USER_LIST);
         sysLoginInfor.setStatus("1");
         sysLoginInfor.setMsg("退出登录");
         sysLoginInfoService.addSysJobLog(sysLoginInfor);
-        log.info("[" + sysLoginInfor.getLoginName() + "]连接关闭，当前在线数为：" + onlineNum.get());
+        log.info("[" + sysLoginInfor.getLoginName() + "]连接关闭，当前在线数为：" + ONLINE_NUM.get());
     }
 
     @Override
@@ -169,15 +189,15 @@ public class WebSocketMessageHandler extends TextWebSocketHandler {
      * 有人上线时在线人数加一
      */
     private static synchronized void addOnlineCount() {
-        onlineNum.incrementAndGet();
+        ONLINE_NUM.incrementAndGet();
     }
 
     /**
      * 有人下线时在线人数减一
      */
     private static void subOnlineCount() {
-        if (onlineNum.get() > 0) {
-            onlineNum.decrementAndGet();
+        if (ONLINE_NUM.get() > 0) {
+            ONLINE_NUM.decrementAndGet();
 
         }
     }
@@ -185,9 +205,10 @@ public class WebSocketMessageHandler extends TextWebSocketHandler {
 
     public List<SysLoginInfor> getOnlineUsers() {
         List<SysLoginInfor> onlineUsers = new ArrayList<>();
-        for (Map.Entry<String, WebSocketSession> webSocketSessionEntry : WEBSOCKET_MAP.entrySet()) {//获取所有的连接
-
-            WebSocketSession session = webSocketSessionEntry.getValue();//找到每个连接
+        /* 获取所有的连接 */
+        for (Map.Entry<String, WebSocketSession> webSocketSessionEntry : WEBSOCKET_MAP.entrySet()) {
+            /* 找到每个连接 */
+            WebSocketSession session = webSocketSessionEntry.getValue();
             if (session != null && session.isOpen()) {
                 SysLoginInfor sysLoginInfor = (SysLoginInfor) session.getAttributes().get(CommonConstants.WEB_SOCKET_USER_LIST);
                 onlineUsers.add(sysLoginInfor);
@@ -197,7 +218,8 @@ public class WebSocketMessageHandler extends TextWebSocketHandler {
     }
 
     public boolean retreat(String userId) {
-        WebSocketSession webSocketSession = WEBSOCKET_MAP.get(userId);//根据接收方的名字找到对应的连接
+        /* 根据接收方的名字找到对应的连接 */
+        WebSocketSession webSocketSession = WEBSOCKET_MAP.get(userId);
         try {
             webSocketSession.close();
             return true;
