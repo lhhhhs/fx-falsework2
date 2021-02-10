@@ -25,4 +25,9 @@ public interface ElementMapper {
 
     List<Element> selectAuthorityElementByUserId(@Param("userId") String userId);
 
+
+
+
+
+
 }

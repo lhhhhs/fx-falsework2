@@ -18,7 +18,7 @@
                 <HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" prefHeight="45.0" prefWidth="200.0" spacing="10.0" styleClass="card-pane">
                     <children>
                         <JFXTextField fx:id="searchField" promptText="用户名或账户" />
-                        <JFXButton fx:id="searchBut" buttonType="RAISED" text="搜索" />
+                        <JFXButton id="test" fx:id="searchBut" buttonType="RAISED" text="搜索" />
                         <JFXButton fx:id="addBut" buttonType="RAISED" text="添加" />
                     </children>
                 </HBox>

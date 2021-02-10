@@ -170,6 +170,16 @@
             <artifactId>lombok</artifactId>
             <version>1.18.16</version>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.squareup.sqldelight</groupId>-->
+<!--            <artifactId>gradle-plugin</artifactId>-->
+<!--            <version>1.0.0-alpha1</version>-->
+<!--        </dependency>-->
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-compiler</artifactId>
+            <version>1.0.6</version>
+        </dependency>
 
     </dependencies>
 
