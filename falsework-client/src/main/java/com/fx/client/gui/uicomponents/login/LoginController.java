@@ -253,7 +253,7 @@ public class LoginController {
     @SneakyThrows
     private void loadingImage() {
 
-        ImageView logBack = new ImageView("/images/login.jpg");
+        ImageView logBack = new ImageView("/images/login.png");
         logBack.fitHeightProperty().bind(imageHeiht);
         logBack.fitWidthProperty().bind(imageWidth);
         imagePane.getChildren().add(new Label("", logBack));
