@@ -3,6 +3,7 @@ package com.fx.client.gui.uicomponents.main;
 import com.fx.client.AppStartup;
 import com.fx.client.bean.MenuVoCell;
 import com.fx.client.gui.feature.FeatureResourceConsumer;
+import com.fx.client.gui.uicomponents.basicInfo.IconSwitch;
 import com.fx.client.gui.uicomponents.home.HomeController;
 import com.fx.client.gui.uicomponents.login.LoginController;
 import com.fx.client.gui.uicomponents.main.components.UserInfoController;
@@ -82,9 +83,8 @@ public class MainController {
     @FXML
     @ActionTrigger("goHome")
     private JFXButton homeButton;
-    @FXML
     @ActionTrigger("showSkinPane")
-    private JFXToggleNode styleNode;
+    private IconSwitch styleNode;
     //刷新按钮
     @FXML
     @EventTrigger("refresh")
@@ -127,7 +127,9 @@ public class MainController {
 
     @PostConstruct
     public void init() throws FlowException {
-
+        styleNode=new IconSwitch();
+        styleNode.setPrefSize(50,32);
+        rightHbox.getChildren().add(0,styleNode);
         navigationList=new JFXListView<>();
         navigationList.getStyleClass().add("navigation-list");
         leftDrawer = new JFXDrawer();
@@ -147,7 +149,6 @@ public class MainController {
             refreshButton.setGraphic(SVGGlyphLoader.getIcoMoonGlyph(ApplicatonStore.ICON_FONT_KEY + ".shuaxin1"));
             bellButton.setGraphic(SVGGlyphLoader.getIcoMoonGlyph(ApplicatonStore.ICON_FONT_KEY + ".cc-bell-o"));
             userButton.setGraphic(SVGGlyphLoader.getIcoMoonGlyph(ApplicatonStore.ICON_FONT_KEY + ".ChevronDownCircle"));
-            styleNode.setGraphic(SVGGlyphLoader.getIcoMoonGlyph(ApplicatonStore.ICON_FONT_KEY + ".moon-fill"));
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -205,8 +206,16 @@ public class MainController {
         });
         drawersStack.toggle(leftDrawer);
         drawersStack.setEffect(null);
-
-        styleNode.selectedProperty().bindBidirectional(ApplicatonStore.styleProperty());
+        ApplicatonStore.styleProperty().bindBidirectional( styleNode.selectedProperty());
+        styleNode.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            try {
+                showSkinPane();
+            } catch (VetoException e) {
+                e.printStackTrace();
+            } catch (FlowException e) {
+                e.printStackTrace();
+            }
+        });
         featureResourceConsumer.consumeResource(this);
 
         navigationList.setCellFactory(listView -> new JFXListCell<Object>() {
@@ -412,19 +421,10 @@ public class MainController {
             String style2 = AppStartup.class.getResource("/css/app-dark.css").toExternalForm();
             if (styleNode.isSelected()) {
 
-                try {
-                    styleNode.setGraphic(SVGGlyphLoader.getIcoMoonGlyph(ApplicatonStore.ICON_FONT_KEY + ".taiyang"));
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+
                 styleNode.getScene().getStylesheets().removeAll(style1);
                 styleNode.getScene().getStylesheets().addAll(style2);
             } else {
-                try {
-                    styleNode.setGraphic(SVGGlyphLoader.getIcoMoonGlyph(ApplicatonStore.ICON_FONT_KEY + ".moon-fill"));
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
 
                 styleNode.getScene().getStylesheets().removeAll(style2);
                 styleNode.getScene().getStylesheets().addAll(style1);

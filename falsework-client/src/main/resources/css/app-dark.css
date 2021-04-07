@@ -222,7 +222,8 @@
 
 .lfx-decorator {
     -fx-decorator-color: -fx-main-base;
-    -fx-background-color: transparent;
+    -fx-background-color: -fx-main-base;
+    -fx-background-radius: 11;
 
 }
 

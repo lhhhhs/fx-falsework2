@@ -22,70 +22,83 @@
 
         <Pane fx:id="backgroundPicturePane" prefHeight="200.0" prefWidth="200.0" styleClass="backgroundPicturePane">
             <StackPane.margin>
-                <Insets />
+                <Insets/>
             </StackPane.margin>
         </Pane>
         <Pane fx:id="backgroundPane" prefHeight="200.0" prefWidth="200.0" styleClass="backgroundPane">
             <StackPane.margin>
-                <Insets />
+                <Insets/>
             </StackPane.margin>
         </Pane>
 
         <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="600.0">
             <children>
-                <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="50.0" spacing="5.0" styleClass="tool-pane" VBox.vgrow="ALWAYS">
+                <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="1.7976931348623157E308"
+                      minHeight="-Infinity" prefHeight="50.0" spacing="5.0" styleClass="tool-pane" VBox.vgrow="ALWAYS">
                     <children>
-                        <JFXHamburger fx:id="navigationButton" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="40.0">
+                        <JFXHamburger fx:id="navigationButton" maxHeight="-Infinity" maxWidth="-Infinity"
+                                      prefHeight="40.0" prefWidth="40.0">
                             <animation>
-                                <HamburgerSlideCloseTransition />
+                                <HamburgerSlideCloseTransition/>
                             </animation>
                             <padding>
-                                <Insets left="5.0" />
+                                <Insets left="5.0"/>
                             </padding>
                         </JFXHamburger>
-                        <JFXButton fx:id="homeButton" contentDisplay="GRAPHIC_ONLY" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="40.0" styleClass="tool-bar-button" />
-                        <JFXButton fx:id="refreshButton" contentDisplay="GRAPHIC_ONLY" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="40.0" styleClass="tool-bar-button" />
+                        <JFXButton fx:id="homeButton" contentDisplay="GRAPHIC_ONLY" maxHeight="-Infinity"
+                                   maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0"
+                                   prefWidth="40.0" styleClass="tool-bar-button"/>
+                        <JFXButton fx:id="refreshButton" contentDisplay="GRAPHIC_ONLY" maxHeight="-Infinity"
+                                   maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0"
+                                   prefWidth="40.0" styleClass="tool-bar-button"/>
                         <JFXDatePicker fx:id="datePicker" editable="false" maxWidth="150">
                             <HBox.margin>
-                                <Insets />
+                                <Insets/>
                             </HBox.margin>
                             <padding>
-                                <Insets bottom="7.0" />
+                                <Insets bottom="7.0"/>
                             </padding>
                         </JFXDatePicker>
 
 
-                        <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
-                     <JFXToggleNode fx:id="styleNode" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="40.0" styleClass="tool-bar-toggle" />
-                            <JFXBadge maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="45.0" styleClass="icons-badge" text="8">
+                        <HBox fx:id="rightHbox" alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+
+                            <JFXBadge maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="45.0"
+                                      styleClass="icons-badge" text="8">
                                 <control>
                                     <StackPane style="-fx-padding: 5;">
-                                        <JFXButton fx:id="bellButton" contentDisplay="GRAPHIC_ONLY" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="40.0" styleClass="tool-bar-button" text="1">
+                                        <JFXButton fx:id="bellButton" contentDisplay="GRAPHIC_ONLY"
+                                                   maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0"
+                                                   prefWidth="40.0" styleClass="tool-bar-button" text="1">
                                             <StackPane.margin>
-                                                <Insets />
+                                                <Insets/>
                                             </StackPane.margin>
                                         </JFXButton>
                                     </StackPane>
                                 </control>
                             </JFXBadge>
                             <VBox alignment="CENTER">
-                                <Label fx:id="userLabel" maxWidth="1.7976931348623157E308" style="-fx-font-size: 16;-fx-font-weight: bold" text="李稳" VBox.vgrow="ALWAYS" />
-                                <Label fx:id="roleLabel" maxWidth="1.7976931348623157E308" style="-fx-font-size: 10;" text="管理员" VBox.vgrow="ALWAYS" />
+                                <Label fx:id="userLabel" maxWidth="1.7976931348623157E308"
+                                       style="-fx-font-size: 16;-fx-font-weight: bold" text="李稳" VBox.vgrow="ALWAYS"/>
+                                <Label fx:id="roleLabel" maxWidth="1.7976931348623157E308" style="-fx-font-size: 10;"
+                                       text="管理员" VBox.vgrow="ALWAYS"/>
                                 <padding>
-                                    <Insets left="7.0" />
+                                    <Insets left="7.0"/>
                                 </padding>
                             </VBox>
-                            <JFXButton fx:id="userButton" contentDisplay="GRAPHIC_ONLY" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" prefHeight="20.0" prefWidth="20.0" styleClass="tool-bar-button" text="user" textFill="WHITE" />
+                            <JFXButton fx:id="userButton" contentDisplay="GRAPHIC_ONLY" maxHeight="20.0" maxWidth="20.0"
+                                       minHeight="20.0" minWidth="20.0" prefHeight="20.0" prefWidth="20.0"
+                                       styleClass="tool-bar-button" text="user" textFill="WHITE"/>
                             <padding>
-                                <Insets right="5.0" />
+                                <Insets right="5.0"/>
                             </padding>
                         </HBox>
                     </children>
                 </HBox>
 
-                <JFXDrawersStack fx:id="drawersStack" VBox.vgrow="ALWAYS" >
+                <JFXDrawersStack fx:id="drawersStack" VBox.vgrow="ALWAYS">
                     <content>
-                        <JFXTabPane fx:id="tabPane" />
+                        <JFXTabPane fx:id="tabPane"/>
                     </content>
                 </JFXDrawersStack>
             </children>
