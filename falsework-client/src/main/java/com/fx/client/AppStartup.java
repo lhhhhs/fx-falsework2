@@ -1,10 +1,10 @@
 package com.fx.client;
 
-import com.fx.client.gui.uicomponents.control.LFXDecorator;
 import com.fx.client.gui.uicomponents.login.LoginController;
 import com.fx.client.store.ApplicatonStore;
 import com.fx.client.websocket.WSClient;
 import com.jfoenix.assets.JFoenixResources;
+import com.jfoenix.controls.JFXDecorator;
 import com.jfoenix.svg.SVGGlyph;
 import com.jfoenix.svg.SVGGlyphLoader;
 import com.netflix.config.ConfigurationManager;
@@ -45,7 +45,7 @@ public class AppStartup extends Application {
         InputStream in = AppStartup.class.getClassLoader().getResourceAsStream("fonts/msyh.ttf");
         Font font1 = Font.loadFont(in, 12);
 
-        System.err.println(font1.getName() + "\t" + font1.getFamily());
+//        System.err.println(font1.getName() + "\t" + font1.getFamily());
         ConfigurationManager.loadPropertiesFromResources("sample-client.properties");
 //
 
@@ -74,7 +74,7 @@ public class AppStartup extends Application {
         applicationContext.register("ContentFlowHandler", contentFlowHandler);
         contentFlowHandler.start(container);
 
-        LFXDecorator wfxDecorator = new LFXDecorator(stage, container.getView(), false, true, true);
+        JFXDecorator wfxDecorator = new JFXDecorator(stage, container.getView());
         wfxDecorator.setCustomMaximize(true);
         wfxDecorator.setGraphic(new SVGGlyph(""));
 

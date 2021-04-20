@@ -22,8 +22,6 @@
 
 
     <dependencies>
-
-
         <dependency>
             <groupId>com.fx</groupId>
             <artifactId>falsework-sever</artifactId>
@@ -36,11 +34,9 @@
             <version>11.0.3</version>
         </dependency>
         <dependency>
-            <groupId>jfoenix</groupId>
+            <groupId>com.jfoenix</groupId>
             <artifactId>jfoenix</artifactId>
-            <version>${jfoenix.version}</version>
-            <scope>system</scope>
-            <systemPath>${pom.basedir}/libs/jfoenix-8.0.10.jar</systemPath>
+            <version>8.0.10</version>
         </dependency>
         <dependency>
             <groupId>tilesfx</groupId>

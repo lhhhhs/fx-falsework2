@@ -115,8 +115,10 @@ public class Request {
 
                 @Override
                 public LBClient create(String clientName) {
+                    System.err.println("--------------------"+clientName+"--------------------");
                     IClientConfig config = ClientFactory.getNamedConfig(clientName);
                     ILoadBalancer lb = ClientFactory.getNamedLoadBalancer(clientName);
+
                     ZoneAwareLoadBalancer zb = (ZoneAwareLoadBalancer) lb;
                     zb.setRule(new BestAvailableRule());
                     LBClient lbClient = LBClient.create(lb, config);
