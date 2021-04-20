@@ -2,18 +2,9 @@ package com.fx.client.gui.uicomponents.control;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.svg.SVGGlyph;
-import javafx.animation.Animation;
-import javafx.animation.Interpolator;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
+import javafx.animation.*;
 import javafx.application.Platform;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 import javafx.geometry.BoundingBox;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -21,21 +12,10 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.control.Tooltip;
+import javafx.scene.effect.BlendMode;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.Border;
-import javafx.scene.layout.BorderStroke;
-import javafx.scene.layout.BorderStrokeStyle;
-import javafx.scene.layout.BorderWidths;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.Region;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
@@ -351,7 +331,6 @@ public class LFXDecorator extends StackPane {
             }
         });
         buttonsContainer.setMinWidth(180);
-        contentPlaceHolder.getStyleClass().add("lfx-decorator-content-container");
         contentPlaceHolder.setMinSize(0, 0);
         StackPane clippedContainer = new StackPane(node);
         contentPlaceHolder.getChildren().add(clippedContainer);
@@ -361,15 +340,9 @@ public class LFXDecorator extends StackPane {
 
         // BINDING
 
-        Rectangle clip = new Rectangle();
-        clip.setArcWidth(20);
-        clip.setArcHeight(20);
-        clip.widthProperty().bind(contentPane.widthProperty());
-        clip.heightProperty().bind(contentPane.heightProperty());
-
         VBox.setVgrow(contentPlaceHolder, Priority.ALWAYS);
-        contentPane.getChildren().addAll(buttonsContainer, contentPlaceHolder);
-        contentPane.setClip(clip);
+        contentPane.getChildren().addAll(buttonsContainer,contentPlaceHolder);
+        contentPane.setBlendMode(BlendMode.SRC_ATOP);
 
         this.setPadding(new Insets(3,3,3,3));
         this.getChildren().addAll(contentPane);
