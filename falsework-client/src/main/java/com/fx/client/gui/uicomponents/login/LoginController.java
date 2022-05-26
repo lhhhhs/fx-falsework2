@@ -7,6 +7,7 @@ import com.fx.client.request.feign.admin.MenuFeign;
 import com.fx.client.request.feign.login.LoginFeign;
 import com.fx.client.store.ApplicatonStore;
 import com.fx.client.utils.AlertUtil;
+import com.fx.client.utils.PathUtils;
 import com.fx.client.websocket.WSClient;
 import com.fx.server.msg.ObjectRestResponse;
 import com.fx.server.util.EncryptUtil;
@@ -50,8 +51,6 @@ import lombok.SneakyThrows;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import java.io.File;
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -258,37 +257,37 @@ public class LoginController {
         logBack.fitWidthProperty().bind(imageWidth);
         imagePane.getChildren().add(new Label("", logBack));
 
-        String imgUrl = this.getClass().getClassLoader().getResource("").toURI().getPath() + "images/login";
-        System.err.println(imgUrl);
-        List<File> files = Arrays.asList(new File(imgUrl).listFiles());
 
         sequentialTransition.setAutoReverse(true);
         sequentialTransition.setCycleCount(Timeline.INDEFINITE);
 
         ProcessChain.create().addPublishingTask(() -> imagePane.getChildren(), p -> {
-            for (int i = 0; i < files.size(); i++) {
 
-                File file = files.get(i);
-                if (!file.isDirectory()) {
-                    String url = "/images/login/" + file.getName();
-                    ImageView imageView = new ImageView(url);
-                    imageView.fitHeightProperty().bind(imageHeiht);
-                    imageView.fitWidthProperty().bind(imageWidth);
-                    Label label = new Label("", imageView);
 
-                    label.setOpacity(0d);
-                    FadeTransition fadeT = new FadeTransition(Duration.millis(500), label);
-                    fadeT.setDelay(Duration.millis(1500));
-                    fadeT.setFromValue(0f);
-                    fadeT.setToValue(1f);
-                    fadeT.setCycleCount(1);
-                    sequentialTransition.getChildren().add(fadeT);
+            String[] children = {"img.png", "img_1.png", "img_2.png", "img_3.png", "img_4.png"};
+            for (String fileName : children) {
+                String url = "/images/login/" + fileName;
 
-                    p.publish(label);
-
+                if (PathUtils.isJar()) {
+                    url = String.format("jar:file:%s!%s", PathUtils.getJarPath(), url);
                 }
+                ImageView imageView = new ImageView(url);
+                imageView.fitHeightProperty().bind(imageHeiht);
+                imageView.fitWidthProperty().bind(imageWidth);
+                Label label = new Label("", imageView);
 
+                label.setOpacity(0d);
+                FadeTransition fadeT = new FadeTransition(Duration.millis(500), label);
+                fadeT.setDelay(Duration.millis(1500));
+                fadeT.setFromValue(0f);
+                fadeT.setToValue(1f);
+                fadeT.setCycleCount(1);
+                sequentialTransition.getChildren().add(fadeT);
+
+                p.publish(label);
             }
+
+
         }).withFinal(() -> sequentialTransition.play()).run();
 
     }

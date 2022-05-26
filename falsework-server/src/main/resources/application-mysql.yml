@@ -5,9 +5,9 @@ spring:
     # 使用druid数据源
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
-      url: jdbc:mysql://${MYSQL_HOST:10.211.55.3}:${MYSQL_PORT:3306}/ipsm_dba?serverTimezone=Asia/Shanghai
+      url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/ipsm_dba?serverTimezone=Asia/Shanghai
       username: root
-      password: Root@12345
+      password: Dillon@123456
       driver-class-name: com.mysql.cj.jdbc.Driver
       # 连接池的配置信息
       # 初始化大小，最小，最大
